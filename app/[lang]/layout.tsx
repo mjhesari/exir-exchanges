@@ -1,38 +1,47 @@
-import "@/styles/globals.css";
-import "@/styles/app.css";
-import clsx from "clsx";
-import { MainProviders } from "../providers/main-provider";
+// Public imports
+import '@/styles/globals.css';
+import '@/styles/app.css';
+import { Metadata } from 'next';
 
-//font
-import localFont from "next/font/local"
+//* Import components
+import { MainProviders } from './providers/main-provider';
 
-import { getDictionary } from "../dictionaries/dictionaries";
-import { LocaleTyeps } from "../dictionaries/dictionaries";
+//* Multi lang config
+import { getDictionary } from './dictionaries/dictionaries';
+import { LocaleTypes } from './dictionaries/dictionaries';
 
+//* Font config
+import localFont from 'next/font/local';
 const yekanBakh = localFont({
-  src : "./fonts/YekanBakh-VF.woff2",
-  display : "swap"
-})
+  src: './fonts/YekanBakh-VF.woff2',
+  display: 'swap',
+});
 
-// Metadata configuration
+//* Metadata
+export const metadata: Metadata = {
+  title: 'P-ID',
+  description: 'Integrated authentication system',
+};
 
 export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: LocaleTyeps };
+  params: { lang: LocaleTypes };
 }) {
-  const dicts = await getDictionary(params.lang)
-  
+  const dicts = await getDictionary(params.lang);
+
   return (
-    <html lang="en">
-      <head>{/* Add custom <head> elements here if needed */}</head>
+    <html
+      lang={dicts.lang}
+      dir={dicts.dir}
+      className={`${yekanBakh.className} tracking-tighter light`}
+    >
       <body>
         <MainProviders dicts={dicts}>
-          <main className="container mx-auto max-w-7xl pt-4 md:pt-16 px-3 md:px-6 flex-grow">
-            {children}
-          </main>
+          {/* Main content */}
+          <main>{children}</main>
         </MainProviders>
       </body>
     </html>
