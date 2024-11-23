@@ -4,8 +4,10 @@
 import { useState, useEffect } from 'react';
 
 const useMediaQuery = (query: string): boolean => {
+  // Hooks
   const [value, setValue] = useState<boolean>(false);
 
+  // Functions
   useEffect(() => {
     const onChange = (event: MediaQueryListEvent): void => {
       setValue(event.matches);

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 // Public imports
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 // Import types
-import { initialStateTypesLang } from "@/types/language-types";
+import { initialStateTypesLang } from '@/types/redux-types';
 
 //* Initial state
 const initialState: initialStateTypesLang = {
@@ -13,14 +13,14 @@ const initialState: initialStateTypesLang = {
 
 //* Slice
 const langSlice = createSlice({
-  name: "data",
+  name: 'lang',
   initialState,
   reducers: {
-    setLaguage: (state, action) => {
+    setLanguage: (state, action) => {
       state.lang = action.payload;
-    }
+    },
   },
 });
 
 export default langSlice.reducer;
-export const {setLaguage} = langSlice.actions
+export const { setLanguage } = langSlice.actions;
