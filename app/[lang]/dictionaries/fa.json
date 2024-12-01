@@ -1,0 +1,56 @@
+{
+  "dir": "rtl",
+  "lang": "fa",
+  "contryCode": "98",
+  "iso": "ir",
+  "exchangeName": "صرافی اکسیر",
+  "langName": "فارسی",
+  "menuSection": {
+    "allExchanges": "همه صرافی ها",
+    "suggestAnExchange": "صرافی پیشنهادی"
+  },
+  "Searchplaceholder": "جست و جو...",
+  "button": {
+    "navigate": "مسیریابی ",
+    "contribute": "مشارکت کردن",
+    "tryItNow": "همین حالا امتحان کنید",
+    "seeallcontribute": "مشاهده همه مشارکت‌کنندگان"
+  },
+  "cardDetails": {
+    "companyType": "نوع شرکت",
+    "founded": "سال تاسیس",
+    "areaServed": "منطقه خدمات دهی",
+    "revenue": "درآمد",
+    "NumberofEmployees": "تعداد  کارمندان",
+    "Founders": "بنیان گذاران"
+  },
+  "cardCompanyItemsDetails": {
+    "nameCompany": "صرافی پارسین",
+    "1": "- خرید و فروش انواع ارزهای کاغذی و زیورآلات طلایی",
+    "2": "- Buying and selling currency in the Nimai system of the CentralBank of the Islamic Republic of Iran",
+    "3": " - Sending corporate and personal currency remittances to all parts of the world by providing an official invoice",
+    "4": "- Buying and selling of EIH and Kunlun remittances",
+    "5": " - Cash transfer delivery to neighbors (Iraq, Afghanistan, Oman,UAE, Türkiye, etc.), Europe and Canada, etc.",
+    "6": "- Importing foreign investors' currency by providing an official invoice",
+    "7": "- Advice on buying and selling digital currency (cryptocurrency).",
+    "8": "- The first free consultation center for bills, remittances,credit opening, digital currency, coins and musukuk"
+  },
+  "infoContact": {
+    "contact": "اطلاعات تماس و ارتباط"
+  },
+  "productandService": "محصولات و سرویس دهی",
+  "socialNetwork": "شبکه های اجتماعی",
+  "holdingApp": "اپلیکیشن هلدینگ صرافی پارسین",
+  "contributors": {
+    "contributors": "مشارکت‌کنندگان",
+    "avardingToken": "توکن‌های اهدا شده"
+  },
+  "businessPartners": "شرکای تجاری",
+  "footerLink": {
+    "terms": "شرایط",
+    "privacy": "حریم خصوصی",
+    "docs": "مستندات",
+    "security": "امنیت"
+  }
+  
+}
