@@ -5,41 +5,19 @@ import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 
 const CompanyContact = ({ dicts }: { dicts?: DictsTypes }) => {
   return (
-    <Card className="flex h-max rounded-lg border p-6" shadow="none">
-      <h3 className="font-semibold text-lg ml-2">
+    <Card className="flex h-max rounded-lg border p-2" shadow="none">
+      <h3 className="font-semibold text-lg p-3 px-5">
         {dicts?.infoContact.contact}
       </h3>
-      <div className="space-y-4 my-5 mx-3">
-        <div className="flex items-center justify-between bg-gray-500/15 rounded-full p-1 w-[max_content]">
-          <p className="text-base text-gray-700 ml-2">
-            parsin.exchange@gmail.com
-          </p>
-          <div className="flex gap-2">
-            <Button
-              size="md"
-              isIconOnly
-              className="border-1 bg-transparent border-indigo-500 text-indigo-500"
-              radius="full"
-            >
-              <Icon icon="solar:copy-linear" width="20" />
-            </Button>
-            <Button
-              size="md"
-              isIconOnly
-              radius="full"
-              className="border-1 bg-transparent border-indigo-500 text-indigo-500"
-            >
-              <Icon icon="solar:letter-linear" width="20" />
-            </Button>
-          </div>
-        </div>
-        <div className="flex items-center justify-between bg-gray-500/15 rounded-full p-1">
+      <div className="space-y-4 my-2 mx-3">
+        
+        <div className="flex items-center justify-between bg-gray-500/15 rounded-full p-2">
           <p className="text-base text-gray-700 mx-2" dir="ltr">
             +98 51 3844 2277{" "}
           </p>
-          <div className="flex justify-center place-content-center items-center gap-2">
+          <div className="flex justify-center place-content-center items-center gap-x-1">
             <Button
-              size="md"
+              size="sm"
               isIconOnly
               radius="full"
               className="border-1 bg-transparent border-indigo-500 text-indigo-500"
@@ -47,7 +25,7 @@ const CompanyContact = ({ dicts }: { dicts?: DictsTypes }) => {
               <Icon icon="solar:copy-linear" width="20" />
             </Button>
             <Button
-              size="md"
+              size="sm"
               isIconOnly
               className="border-1 bg-transparent border-indigo-500 text-indigo-500"
               radius="full"

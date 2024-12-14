@@ -21,7 +21,7 @@ const CompanyCuntributes = ({ dicts }: { dicts?: DictsTypes }) => {
           </p>
         </CardHeader>
         <CardBody className="flex-row justify-between items-center">
-          <AvatarGroup isBordered max={3} total={10}>
+          <AvatarGroup isBordered max={5} total={10}>
             <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
             <Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />
             <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />

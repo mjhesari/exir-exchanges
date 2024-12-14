@@ -1,7 +1,7 @@
 import { Card, Spacer } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import ScrollingBanner from "./CompanyPartners/scrolling-banner";
-import {Logo1, Logo10, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9} from "./CompanyPartners/logos";
+import ScrollingBanner from "../CompanyPartners/scrolling-banner";
+import {Logo1, Logo10, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9} from "../CompanyPartners/logos";
 const logos = [
   {
     key: "logo-1",

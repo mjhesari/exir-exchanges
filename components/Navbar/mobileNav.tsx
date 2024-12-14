@@ -106,7 +106,6 @@ const MobileNav = () => {
                 About Exir
               </Link>
             </div>
-
             <div className="flex justify-between items-center mt-4">
               <span className="text-sm text-default-500">
                 © 2024 Exir Exchange

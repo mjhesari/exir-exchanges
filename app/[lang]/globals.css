@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 body {
-    @apply bg-default-100;
+   background-color: #FAFAFA;
+   ;
 }
 /* Public styles */
 .accent-btn {
     @apply bg-gradient-to-br from-secondary-300 to-[#004FC4] text-white rounded-full;
 }
 .text-accent {
-    @apply bg-gradient-to-br from-secondary-300 to-[#004FC4] text-transparent bg-clip-text rounded-full;
+    @apply bg-gradient-to-br from-secondary-300 to-[#004FC4] text-transparent bg-clip-text;
 }

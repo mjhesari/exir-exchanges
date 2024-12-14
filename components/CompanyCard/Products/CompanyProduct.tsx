@@ -3,14 +3,17 @@ import { Button, Card, CardBody } from "@nextui-org/react";
 import Image from "next/image";
 import img6 from "@/public/image.png";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+import SectionTitle from "../../pages/SearchFilter/SectionTitle";
 
 const CompanyProduct = ({ dicts }: { dicts: DictsTypes }) => {
   return (
     <div className="rounded-lg border bg-white">
       <div>
-        <h3 className="p-6 font-semibold text-lg ml-2">
+        <div className="p-6 ml-2">
+          <SectionTitle>
           {dicts.productandService}
-        </h3>
+          </SectionTitle>
+        </div>
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4 w-full place-items-center p-8 pt-0">
           <Card className="border rounded-t-xl" shadow="none">
             <CardBody className="flex flex-col p-0">
@@ -47,7 +50,7 @@ const CompanyProduct = ({ dicts }: { dicts: DictsTypes }) => {
                     <Icon icon="ep:arrow-right" width="20" height="20" />
                   }
                 >
-                  Try it Now
+                  {dicts.button.tryItNow}{" "}
                 </Button>
               </article>
             </CardBody>

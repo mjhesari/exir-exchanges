@@ -13,5 +13,5 @@ export const getDictionary = async (locale: langsType) => {
   if (!dictionaries[locale]) {
     throw new Error(`Dictionary for locale '${locale}' not found`);
   }
-  return dictionaries[locale](); // اینجا فراخوانی تابع درست است
+  return dictionaries[locale](); 
 };

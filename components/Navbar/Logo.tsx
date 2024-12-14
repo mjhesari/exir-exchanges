@@ -1,7 +1,6 @@
 import Link from "next/link";
 const Logo = () => {
   return (
-    <Link href=''>
     <svg
       width="48"
       height="48"
@@ -209,7 +208,6 @@ const Logo = () => {
         </clipPath>
       </defs>
     </svg>
-    </Link>
   );
 };
 

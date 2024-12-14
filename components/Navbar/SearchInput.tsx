@@ -7,19 +7,17 @@ import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
   return (
     <Input
+    classNames={{
+      input: " font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20 ",
+      innerWrapper: "bg-transparent ",
+      base:'max-xl:w-[15rem]',
+      mainWrapper:'max-xl:w-[15rem] w-[25rem]'
+    }}
     radius="full"
-      classNames={{
-        base: "max-xl:w-[15rem] h-10",
-        mainWrapper: "max-xl:w-[15rem] w-[20rem]",
-        input: "text-small",
-        inputWrapper:
-          "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20 rounded-full",
-      }}
-      placeholder={dicts?.Searchplaceholder}
-      size="sm"
-      startContent={<Icon icon="solar:magnifer-line-duotone" />}
-      type="search"
-    />
+    placeholder={dicts?.Searchplaceholder}
+    startContent={<Icon icon="solar:magnifer-line-duotone" />}
+    type="search"
+  />
   );
 };
 
