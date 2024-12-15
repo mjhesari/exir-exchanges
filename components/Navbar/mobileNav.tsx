@@ -3,17 +3,18 @@ import { Icon } from "@iconify/react";
 import { Button, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { Divider } from "@nextui-org/divider";
-const MobileNav = () => {
+import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+const MobileNav = ({ dicts }: { dicts: DictsTypes }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       {/* Fixed Bottom Navigation */}
-      <div className=" fixed bottom-4 left-0 right-0 flex justify-center z-10 lg:hidden">
-        <div className="bg-background/70 bg-white rounded-full p-5 gap-1 flex flex-row border justify-center">
+      <div className=" fixed bottom-4 left-0 right-0 flex justify-center mx-3 z-20 lg:hidden">
+        <div className="bg-background/70 bg-white rounded-full p-4 gap-1 overflow-auto flex flex-row border justify-center">
           <Button
             variant="light"
-            size="sm"
+            size="md"
             onPress={() => setIsOpen(!isOpen)}
             isIconOnly
             endContent={
@@ -24,17 +25,26 @@ const MobileNav = () => {
               />
             }
           ></Button>
-          <div className="gap-5 flex flex-row">
-            <Link href="#apps">Apps</Link>
-            <Link href="#social">Social</Link>
-            <Link href="#services">Servies</Link>
-            <Link href="#contact">Contact</Link>
+          {/* مونده کار */}
+          <div className="gap-4 overflow-x-auto flex flex-row px-3">
+            <Link href="#apps">{dicts?.menuSection?.mobileMenu?.apps}</Link>
+            <Link href="#social">{dicts?.menuSection?.mobileMenu?.social}</Link>
+            <Link href="#services">
+              {dicts?.menuSection?.mobileMenu?.services}
+            </Link>
+            <Link href="#contact">
+              {dicts?.menuSection?.mobileMenu?.contact}
+            </Link>
+            <Link href="#about">about</Link>
+            <Link href="#portfolio">portfolio</Link>
+            <Link href="#blog">blog</Link>
+            <Link href="#support">support</Link>
           </div>
         </div>
       </div>
       {/* Sliding Menu */}
       <div
-        className={`z-30 bg-white flex flex-col gap-3 h-max fixed bottom-0 left-5 right-5 max-w-[400px] mx-auto bg-background/70 backdrop-blur-lg rounded-t-xl shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`z-30 bg-white gap-3 h-max fixed max-w-[420px] bottom-0 left-5 right-5 mx-auto bg-background/70 backdrop-blur-lg rounded-t-xl shadow-lg transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
@@ -59,23 +69,27 @@ const MobileNav = () => {
         <div className="p-4 space-y-4 max-w-md mx-auto z-10">
           <Link
             href="#all-exchanges"
-            className="block py-2 hover:bg-default-100 rounded-lg  px-4"
+            className="block py-2 hover:bg-default-100 rounded-lg px-4"
           >
-            All Exchanges
+            <span className="text-accent">
+              {dicts?.menuSection?.mainNav?.allExchanges}
+            </span>
           </Link>
           <Link
             href="#suggest"
             className="block py-2 hover:bg-default-100 rounded-lg px-4"
           >
-            <span className="text-accent">Suggest</span> An Exchange
+            <span className="text-accent">
+              {dicts?.menuSection?.mainNav?.suggestAnExchange}
+            </span>
           </Link>
           <div className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4">
             <Icon icon="mdi:magnify" className="h-5 w-5 mr-2" />
-            <span>Search</span>
+            <span>{dicts?.button?.search}</span>
           </div>
           <div className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4">
             <Icon icon="mdi:translate" className="h-5 w-5 mr-2" />
-            <span>En</span>
+            <span className="mx-2">{dicts?.lang}</span>
           </div>
           <Button
             className="w-full"
@@ -83,27 +97,27 @@ const MobileNav = () => {
             variant="bordered"
             radius="full"
           >
-            Manage Profile
+            {dicts?.button?.manageProfile}
           </Button>
           <Button className="accent-btn" fullWidth>
-            Contribute to Earn
+            {dicts?.button?.countributeToEarn}
           </Button>
           <div className="pt-4">
             <div className="flex justify-around text-sm [&_*]:text-default-500">
               <Link href="#terms" size="sm">
-                Terms
+                {dicts?.footerLink?.terms}
               </Link>
               <Divider orientation="vertical" className="h-5" />
               <Link href="#privacy" size="sm">
-                Privacy
+                {dicts?.footerLink?.privacy}
               </Link>
               <Divider orientation="vertical" className="h-5" />
               <Link href="#contact" size="sm">
-                Contact
+                {dicts?.footerLink?.security}
               </Link>
               <Divider orientation="vertical" className="h-5" />
               <Link href="#about" size="sm">
-                About Exir
+                {dicts?.footerLink?.aboutExir}
               </Link>
             </div>
             <div className="flex justify-between items-center mt-4">

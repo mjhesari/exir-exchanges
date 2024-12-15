@@ -2,21 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Chip, Select, SelectItem } from "@nextui-org/react";
 // import Types
 import { Country } from "@/types/componentTypes";
-
+import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 
 interface CountrySelectProps {
+  dicts:DictsTypes
   selectedCountries: string[];
   handleCountryChange: (value: Set<string>) => void;
   handleRemoveCountry: (country: string) => void;
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({
+  dicts,
   selectedCountries,
   handleCountryChange,
   handleRemoveCountry,
 }) => {
   const [countries, setCountries] = useState<Country[]>([]);
-// Fetch Data Countries
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Fetch Data Countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -28,6 +32,8 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
         setCountries(data);
       } catch (error) {
         console.error("Error fetching countries:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -42,15 +48,16 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="font-semibold">Country</h3>
+      <h3 className="font-semibold">{dicts?.CardFilter?.country}</h3>
       <div>
         <Select 
-        aria-label="country-selector"
-          placeholder="Choose countries"
+          aria-label="country-selector"
+          placeholder={loading ? "Loading countries..." : `${dicts?.placeholder?.countryChoose}`}
           fullWidth
           selectionMode="multiple"
           selectedKeys={new Set(selectedCountries)}
           onSelectionChange={(keys) => handleCountryChange(keys as Set<string>)}
+          isDisabled={loading} 
         >
           {countries.map((country) => (
             <SelectItem key={country.iso} value={country.iso}>
@@ -59,10 +66,10 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
           ))}
         </Select>
       </div>
-      <div className="flex flex-wrap gap-2 mt-2">
+      <div className="flex flex-wrap gap-2">
         {selectedCountries.map((countryIso) => (
           <Chip
-          className=" text-wrap h-full py-1"
+            className=" text-wrap h-full py-1"
             key={countryIso}
             variant="bordered"
             onClose={() => handleRemoveCountry(countryIso)}

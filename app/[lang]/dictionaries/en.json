@@ -6,15 +6,33 @@
   "exchangeName": "Exir Exchange",
   "langName": "English",
   "menuSection": {
-    "allExchanges": "All Exchanges",
-    "suggestAnExchange": "Suggest An Exchange"
+    "mainNav":{
+      "allExchanges": "All Exchanges",
+      "suggestAnExchange": "Suggest An Exchange"
+    }
+    ,
+    "mobileMenu":{
+      "apps":"Apps",
+      "services":"Services",
+      "social":"Social",
+      "contact":"Contact"
+    }
   },
-  "Searchplaceholder": "Search...",
+  "placeholder": {
+    "search": "Search...",
+    "paymentChoose": "Choose Payment Methods",
+    "currencyChoose": "Choose Currencies",
+    "countryChoose": "Choose Countries"
+  },
   "button": {
+    "clearAll": "Clear all",
     "navigate": "Navigate",
     "contribute": "Contribute",
     "tryItNow": "Try It Now",
-    "seeallcontribute":"See All Contributors"
+    "seeallcontribute": "See All Contributors",
+    "search":"Search",
+    "manageProfile":"Manage Profile",
+    "countributeToEarn":"Contribute To Earn"
   },
   "cardDetails": {
     "companyType": "CompanyType",
@@ -45,11 +63,30 @@
     "contributors": "Contributors",
     "avardingToken": "Avarded Tokens"
   },
-  "businessPartners":"Business Partners",
-  "footerLink":{
-    "terms":"Terms",
-    "privacy":"Privacy",
-    "docs":"Docs",
-    "security":"Security"
+  "businessPartners": "Business Partners",
+  "footerLink": {
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "docs": "Docs",
+    "security": "Security",
+    "aboutExir":"About Exir"
+  },
+  "CardFilter": {
+    "filter": "Filter",
+    "exchangeCategory": "Echanges Categories",
+    "fiatDeposite": "Fiat Deposite",
+    "country": "Country",
+    "acceptedPaymentMethods": "Accepted Payment Methods",
+    "marginTrading": "Margin Trading",
+    "marketWithFees": "Market With Fees"
+  },
+  "CardResult":{
+    "selector":{
+      "relevant":"Relevant",
+      "newest":"Newest",
+      "oldest":"Oldest"
+    },
+    "exchanges":"Exchanges",
+    "sortBy":"Sort By"
   }
 }

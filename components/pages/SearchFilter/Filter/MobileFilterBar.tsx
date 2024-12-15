@@ -1,9 +1,7 @@
+"use client";
 import {
   Drawer,
   DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
   Button,
   useDisclosure,
 } from "@nextui-org/react";
@@ -13,19 +11,29 @@ import { Icon } from "@iconify/react";
 
 const MobileFilterBar = ({ dicts }: { dicts: DictsTypes }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+const left=dicts.dir==="rtl"? "left":"right"
   return (
-    <>
-      <Button onPress={onOpen} className="lg:hidden bg-white border w-max text-lg"
-      startContent={<Icon icon="mdi:filter" width="24" height="24" />}>
-        Filter
+    <div className="lg:hidden">
+      <Button
+        onPress={onOpen}
+        className="bg-white border w-max text-lg"
+        startContent={<Icon icon="mdi:filter" width="24" height="24" />}
+      >
+        {dicts?.CardFilter?.filter}
       </Button>
-      <Drawer isOpen={isOpen} onOpenChange={onOpenChange} className="lg:hidden w-[85%]" classNames={{ backdrop: 'lg:hidden', closeButton: 'z-50 text-xl' }}>
+      <Drawer
+      
+      placement={`${left}`}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="lg:hidden w-[85%]"
+        classNames={{ backdrop: "lg:hidden", closeButton: "z-50 text-xl" }}
+      >
         <DrawerContent>
           <CardFilter dicts={dicts} />
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 };
 

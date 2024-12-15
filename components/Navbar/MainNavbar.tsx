@@ -46,13 +46,13 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
       </NavbarContent>
       <NavbarContent className="flex-1 gap-6 " justify="center">
         <NavbarItem>
-          <Link href="/searchfilter" className="text-black">
-            {dicts.menuSection.allExchanges}
+          <Link href="/" className="text-black">
+            {dicts?.menuSection?.mainNav?.allExchanges}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/suggest" className="text-black">
-            {dicts.menuSection.suggestAnExchange}
+          <Link href="/" className="text-black">
+            {dicts?.menuSection?.mainNav?.suggestAnExchange}
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -64,7 +64,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
             aria-label="language page"
             className="text-black"
           >
-            En
+            {dicts?.lang}
             <Icon icon="uil:angle-down" width="1.4rem" height="1.4rem" />
           </Link>
         </NavbarItem>

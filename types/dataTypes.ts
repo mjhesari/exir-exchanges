@@ -146,3 +146,92 @@ export interface SiteData {
     siteData: SiteData;
     siteConfig: SiteConfig;
   }
+
+ export interface Business {
+    id: string;
+    publicId: string;
+    slug: string;
+    name: {
+        ar?: string;
+        en?: string;
+        fa: string;
+    };
+    slogan?: {
+        en?: string;
+        fa?: string;
+    };
+    defaultLanguage?: string;
+    description?: {
+        en?: string;
+        fa: string;
+    };
+    type?: string[];
+    industry?: string[];
+    tags?: string[];
+    image:string;
+    address: string;
+    borough?: string;
+    zip?: string;
+    city: string | number;
+    region: string | number;
+    country: string | number;
+    phone: {
+        title: string;
+        value: string;
+    }[];
+    mail?: string | null;
+    workTime?: {
+        [key: string]: {
+            open: {
+                hour: number;
+                minute: number;
+            };
+            close: {
+                hour: number;
+                minute: number;
+            };
+        }[];
+    };
+    logo?: {
+        url: string;
+        type: string;
+    }[] | null;
+    media?: {
+        src: string;
+        type: string;
+        title: string;
+        private: boolean;
+        position?: string;
+    }[];
+    color?: {
+        hex: string;
+        type: string;
+    }[] | null;
+    links?: {
+        url: string;
+        type: string;
+        title?: {
+            ar?: string;
+            en?: string;
+            fa?: string;
+        };
+    }[];
+    foundingLocation?: string;
+    foundingDate?: string | number;
+    parentId?: string | null;
+    relatedBusinessId?: string[];
+    attributes?: string[];
+    claimed: boolean;
+    status: string;
+    date: string;
+    version: string | number;
+    authorId: string;
+    geo?: string | null;
+}
+
+ export interface DataStructure {
+    data: Business[];
+    details: {
+        count: number;
+    };
+}

@@ -3,7 +3,7 @@
 import MainBanner from "@/components/Banner/MainBanner";
 import { CompanyDetails } from "@/components/CompanyCard/DetailsExchange/CompanyDetails";
 import { CompanyOverview } from "@/components/CompanyCard/Overview/CompanyOverview";
-import { getDictionary, langsType } from "../../dictionaries/dictionaries";
+import { getDictionary, langsType } from "../dictionaries/dictionaries";
 import CompanyItemsCard from "@/components/CompanyCard/FeaturesExchange/CompanyItemsCard";
 import CompanyContact from "@/components/CompanyCard/Contact/CompanyContact";
 import { CompanyLocCard } from "@/components/CompanyCard/Locaition/CompanyLoccard";

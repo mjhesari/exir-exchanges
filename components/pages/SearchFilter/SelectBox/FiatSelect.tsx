@@ -3,21 +3,36 @@ import { Chip, Select, SelectItem } from "@nextui-org/react";
 import { fiatDespoit } from "@/utils/data/data";
 // import Types
 import { CurrenciesSelectProps } from "@/types/componentTypes";
+import { useDispatch } from "react-redux";
+import { setSelectedCurrencies } from "@/redux/features/filters/filter-slice";
   
 const FiatSelect:React.FC<CurrenciesSelectProps> = ({
-    selectedCurrencies,
-    handleCurrencyChange,
-    handleRemoveCurrency,
-  }) => {
+  selectedCurrencies,
+  dicts
+}) => {
+  const dispatch = useDispatch();
+
+  // Dispatch function for updating currencies
+  const handleCurrencyChange = (value: Set<string>) => {
+      dispatch(setSelectedCurrencies(Array.from(value)));
+  };
+
+  // Dispatch function for removing a currency
+  const handleRemoveCurrency = (currency: string) => {
+      const updatedCurrencies = selectedCurrencies.filter(
+          (selectedCurrency) => selectedCurrency !== currency
+      );
+      dispatch(setSelectedCurrencies(updatedCurrencies));
+  };
     return (
         <div className="flex flex-col gap-3">
-              <h3 className="font-semibold">Fiat Deposit</h3>
+              <h3 className="font-semibold">{dicts?.CardFilter?.fiatDeposite}</h3>
 
-              <div className="flex w-full flex-col md:flex-nowrap gap-4">
+              <div className="flex w-full flex-col md:flex-nowrap">
                 <Select
                   className="max-w-xs"
                   aria-label="fiat-selector"
-                  placeholder="Choose Currencies"
+                  placeholder={`${dicts?.placeholder?.currencyChoose}`}
                   selectionMode="multiple"
                   selectedKeys={new Set(selectedCurrencies)}
                   onSelectionChange={(keys) =>

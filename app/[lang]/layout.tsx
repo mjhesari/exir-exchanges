@@ -10,12 +10,19 @@ import MainFooter from "@/components/Footer/MainFooter";
 import MobileNav from "@/components/Navbar/mobileNav";
 import NavTopLogo from "@/components/Navbar/navTopLogo";
 
-const getExchangeData=async()=>{
-const data=await fetch(`${process.env.BASE_URL}/api/`, {
-  headers: { Authorization: `Bearer ${process.env.TOKEN}` },
-})
-
-}
+const getExchangeData = async () => {
+  try{
+    const data = await fetch(`${process.env.BASE_URL}/api/business`, {
+      headers: { Authorization: `Bearer ${process.env.TOKEN}` },
+    })
+    .then((response) => response.json())
+    .then((data) => data);
+    return{ data}
+  }
+  catch(error){
+    console.error("Error fetching LocalBusinessData:", error);
+    return { data: { Data:{} } };
+}}
 //* Local fonts
 const yekanBakh = localFont({
   src: "./fonts/YekanBakh-VF.woff2",
@@ -37,15 +44,16 @@ export default async function RootLayout({
   params,
 }: Readonly<{ children: React.ReactNode; params: { lang: langsType } }>) {
   const dicts = await getDictionary(params?.lang);
+  const {data}=await getExchangeData()
   const font = dicts.dir === "rtl" ? yekanBakh.className : roboto.className;
   return (
     <html lang={dicts.lang} dir={dicts.dir}>
-      <body className={`${font} ${dicts.dir}`}>
-        <MainProviders>
-          <NavTopLogo />
+      <body className={`${font}`}>
+        <MainProviders exchange={data}>
+          <NavTopLogo dicts={dicts}/>
           <MainNavbar dicts={dicts} />
           {children}
-          <MobileNav />
+          <MobileNav dicts={dicts}/>
           <MainFooter dicts={dicts} />
         </MainProviders>
       </body>

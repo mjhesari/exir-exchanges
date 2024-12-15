@@ -1,11 +1,16 @@
+import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+
 // Select Components Types (FilterCard)
 export interface PaymentsSelectProps {
-  selectedPayment: string[];
+  dicts:DictsTypes
+  selectedPayments: string[];  
   handlePaymentChange: (value: Set<string>) => void;
-  handleRemovePayment: (country: string) => void;
+  handleRemovePayment: (payment: string) => void; 
 }
 
+
 export interface CurrenciesSelectProps {
+  dicts:DictsTypes
   selectedCurrencies: string[];
   handleCurrencyChange: (value: Set<string>) => void;
   handleRemoveCurrency: (currency: string) => void;
@@ -28,7 +33,9 @@ export interface Country {
     nativeName: string;
   }>;
 }
-export interface Category {
-  selectedCheckBox: string[];
-  handleChange: (value: string[]) => void;
+
+export interface CategorySelectProps {
+  dicts: DictsTypes;
+  handleChange: (selected: string[]) => void; // تابع تغییر
+  selectedCheckBox: string[]; // لیست انتخاب‌شده (مطابق با CheckboxGroup)
 }

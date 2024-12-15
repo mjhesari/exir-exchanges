@@ -1,15 +1,12 @@
-"use client";
-
-import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+import { DictsTypes, getDictionary, langsType } from "@/app/[lang]/dictionaries/dictionaries";
 import CardResult from "@/components/pages/SearchFilter/Result/CardResult";
-import DesktopFilterBar from "@/components/pages/SearchFilter/Filter/DesktopFilterBar";
-import MobileFilterBar from "@/components/pages/SearchFilter/Filter/MobileFilterBar";
+import FilterBar from "@/components/pages/SearchFilter/Filter";
 
-const Home = ({ dicts }: { dicts: DictsTypes }) => {
+const Home =async ({ params }: { params: { lang: langsType } }) => {
+  const dicts=await getDictionary(params?.lang)
   return (
-    <main className=" container mx-auto grid grid-cols-1 lg:grid-cols-[200px_auto] gap-x-32 gap-y-5 px-5 lg:px-0 pt-20 lg:pt-5">
-      <DesktopFilterBar dicts={dicts}/>
-      <MobileFilterBar dicts={dicts}/>
+    <main className="container mx-auto grid grid-cols-1 lg:grid-cols-[200px_auto] gap-x-[116px] gap-y-3 px-5 lg:px-0 pt-20 lg:pt-4">
+      <FilterBar dicts={dicts} />
       <CardResult dicts={dicts} />
     </main>
   );

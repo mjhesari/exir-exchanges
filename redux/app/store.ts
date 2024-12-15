@@ -2,11 +2,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 //* Reducers
-import test from '../features/test/test-slice';
+import filterReducer from "@/redux/features/filters/filter-slice";
+import dataReducer from "@/redux/features/data/data-slice";
 
 export const store = configureStore({
   reducer: {
-    test,
+    filters: filterReducer,
+    data: dataReducer,
   },
 });
 

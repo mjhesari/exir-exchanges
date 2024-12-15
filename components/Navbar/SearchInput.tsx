@@ -14,7 +14,7 @@ const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
       mainWrapper:'max-xl:w-[15rem] w-[25rem]'
     }}
     radius="full"
-    placeholder={dicts?.Searchplaceholder}
+    placeholder={dicts?.placeholder?.search}
     startContent={<Icon icon="solar:magnifer-line-duotone" />}
     type="search"
   />

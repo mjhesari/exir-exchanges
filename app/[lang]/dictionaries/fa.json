@@ -6,15 +6,31 @@
   "exchangeName": "صرافی اکسیر",
   "langName": "فارسی",
   "menuSection": {
+    "mainNav":{
     "allExchanges": "همه صرافی ها",
     "suggestAnExchange": "صرافی پیشنهادی"
+    },
+    "mobileMenu":{
+      "apps":"برنامه ها",
+      "services":"سرویس ها",
+      "social":"شبکه های اجتماعی",
+      "contact":"تماس"
+    }
   },
-  "Searchplaceholder": "جستجو...",
+  "placeholder":{ "search":"جستجو...",
+  "paymentChoose":"روش پرداخت انتخاب کن",
+  "currencyChoose":"پول ارزی انتخاب کن"
+  ,"countryChoose":"کشور انتخاب کن"},
+  
   "button": {
+    "clearAll": "پاک کردن همه",
     "navigate": "مسیریابی ",
     "contribute": "مشارکت کردن",
     "tryItNow": "همین حالا امتحان کنید",
-    "seeallcontribute": "مشاهده همه مشارکت‌کنندگان"
+    "seeallcontribute": "مشاهده همه مشارکت‌کنندگان",
+    "search":"جستجو",
+    "manageProfile":"مدیریت پروفایل",
+    "countributeToEarn":"مشارکت برای کسب درآمد"
   },
   "cardDetails": {
     "companyType": "نوع شرکت",
@@ -50,7 +66,26 @@
     "terms": "شرایط",
     "privacy": "حریم خصوصی",
     "docs": "مستندات",
-    "security": "امنیت"
+    "security": "امنیت",
+    "aboutExir":"درباره اکسیر"
+
+  },
+  "CardFilter": {
+    "filter": "مرتب سازی",
+    "exchangeCategory": "دسته بندی صرافی ها",
+    "fiatDeposite": "واریز پول ارزی",
+    "country": "کشور",
+    "acceptedPaymentMethods":"روش های پرداخت تایید شده",
+    "marginTrading":"معامله اهرمی",
+    "marketWithFees":"بازار با کارمزد"
+  },
+  "CardResult":{
+    "selector":{
+      "relevant":"مرتبط",
+      "newest":"جدیدترین",
+      "oldest":"قدیمی ترین"
+    },
+    "exchanges":"صرافی ها",
+    "sortBy":"بر اساس"
   }
-  
 }

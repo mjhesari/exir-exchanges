@@ -1,5 +1,4 @@
 "use client"
-import { Icon } from "@iconify/react";
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 
 const UserAvatar = () => {
