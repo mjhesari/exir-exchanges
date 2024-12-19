@@ -9,7 +9,6 @@ const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
   const { selectedCategories } = useAppSelector(
     (state: RootState) => state.filters
     );
-    console.log('selectedCategories: ', selectedCategories);
   const dispatch = useAppDispatch();
   return (
     <div className="flex flex-col gap-3 mt-4 ">

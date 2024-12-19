@@ -50,7 +50,6 @@ export const filterConvertor = (filters: FilterState) => {
       ...((body?.attribute as { key: string; value: boolean }[]) ?? []),
       { key: switchIsSelectedMarket, value: true },
     ]);
-  console.log("body: ", body);
 
   return Object.keys(body).length ? body : false;
 };

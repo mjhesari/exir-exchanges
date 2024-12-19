@@ -14,7 +14,6 @@ import { setExchangeData } from "@/redux/features/data/data-slice";
 import { getExchangeData } from "@/utils/api";
 const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
   const exchangeData = useAppSelector((state) => state.data.data);
-  console.log('exchangeData: ', exchangeData);
   const dispatch = useAppDispatch();
   const [pageIndex, setPageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
