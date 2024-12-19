@@ -1,8 +1,15 @@
 import { Icon } from "@iconify/react";
 import { Button, Card } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+import { Business } from "@/types/dataTypes";
 
-const CompanySocialMedia = ({ dicts }: { dicts: DictsTypes }) => {
+const CompanySocialMedia = ({
+  exchangeData,
+  dicts,
+}: {
+  exchangeData: Business;
+  dicts: DictsTypes;
+}) => {
   return (
     <Card className="flex rounded-lg border p-4" shadow="none">
       <h3 className="font-semibold text-lg ml-2 p-2">{dicts.socialNetwork}</h3>

@@ -20,9 +20,9 @@ import {
   toggleSelectedMargin,
   resetFilters,
 } from "@/redux/features/filters/filter-slice";
+import { useCallback } from "react";
 const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
   const dispatch = useDispatch();
-  
 
   const {
     selectedCategories,
@@ -33,33 +33,37 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
     switchIsSelectedMargin,
   } = useSelector((state: RootState) => state.filters);
 
-  const handleClearAll = () => {
+  const handleClearAll = useCallback(() => {
     dispatch(resetFilters());
-  };
+  }, [dispatch]);
 
-  const handleCategoryChange = (value: string[]) => {
-    dispatch(setSelectedCategories(value));
-  };
+  const handleCategoryChange = useCallback(
+    (value: string[]) => {
+      dispatch(setSelectedCategories(value));
+    },
+    [dispatch]
+  );
 
-  const handleCurrencyChange = (value: Set<string>) => {
-    dispatch(setSelectedCurrencies(Array.from(value)));
-  };
+  const handleCountryChange = useCallback(
+    (value: Set<string>) => {
+      dispatch(setSelectedCountries(Array.from(value)));
+    },
+    [dispatch]
+  );
 
-  const handlePaymentChange = (value: Set<string>) => {
-    dispatch(setSelectedPayments(Array.from(value)));
-  };
+  const handleToggleMarket = useCallback(
+    (value: boolean) => {
+      dispatch(toggleSelectedMarket(value));
+    },
+    [dispatch]
+  );
 
-  const handleCountryChange = (value: Set<string>) => {
-    dispatch(setSelectedCountries(Array.from(value)));
-  };
-
-  const handleToggleMarket = (value: boolean) => {
-    dispatch(toggleSelectedMarket(value));
-  };
-
-  const handleToggleMargin = (value: boolean) => {
-    dispatch(toggleSelectedMargin(value));
-  };
+  const handleToggleMargin = useCallback(
+    (value: boolean) => {
+      dispatch(toggleSelectedMargin(value));
+    },
+    [dispatch]
+  );
 
   return (
     <Card
@@ -69,7 +73,8 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
       <div className="p-5 flex flex-col">
         <div className="flex items-start flex-col">
           <SectionTitle>
-            <Icon icon="mdi:filter" width="24" height="24" /> {dicts?.CardFilter.filter}
+            <Icon icon="mdi:filter" width="24" height="24"/>{" "}
+            {dicts?.CardFilter.filter}
           </SectionTitle>
           {selectedCategories.length > 0 ||
           selectedCurrencies.length > 0 ||
@@ -83,7 +88,6 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
               size="sm"
               aria-label={`${dicts?.button.clearAll}`}
               endContent={<Icon icon="lucide:x" width={15} />}
-            
             >
               {dicts?.button.clearAll}
             </Button>
@@ -92,36 +96,21 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
         <div>
           <div className="flex flex-col gap-5">
             <CategorySelect
-            dicts={dicts}
+              dicts={dicts}
               handleChange={handleCategoryChange}
               selectedCheckBox={selectedCategories}
             />
-            <Divider className="my-0" />
-            <PaymentSelect
-            dicts={dicts}
-              selectedPayments={selectedPayments}
-              handlePaymentChange={(value) => handlePaymentChange(value)}
-              handleRemovePayment={(payment) =>
-                handlePaymentChange(
-                  new Set(selectedPayments.filter((p) => p !== payment))
-                )
-              }
-            />
+            <Divider className="my-0"/>
+            <PaymentSelect dicts={dicts} selectedPayments={selectedPayments} />
 
-            <Divider className="my-0" />
+            <Divider className="my-0"/>
             <FiatSelect
-            dicts={dicts}
+              dicts={dicts}
               selectedCurrencies={selectedCurrencies}
-              handleCurrencyChange={(value) => handleCurrencyChange(value)}
-              handleRemoveCurrency={(currency) =>
-                handleCurrencyChange(
-                  new Set(selectedCurrencies.filter((c) => c !== currency))
-                )
-              }
             />
-            <Divider className="my-0" />
+            <Divider className="my-0"/>
             <CountrySelect
-            dicts={dicts}
+              dicts={dicts}
               selectedCountries={selectedCountries}
               handleCountryChange={(value) => handleCountryChange(value)}
               handleRemoveCountry={(country) =>
@@ -132,13 +121,13 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
             />
             <Divider className="my-0" />
             <MarginSwitch
-            dicts={dicts}
+              dicts={dicts}
               SwitchSelectedMargin={switchIsSelectedMargin}
               setSwitchSelectedMargin={(value) => handleToggleMargin(value)}
             />
             <Divider className="my-0" />
             <MarketSwitch
-            dicts={dicts}
+              dicts={dicts}
               switchIsSelectedMarket={switchIsSelectedMarket}
               setSwitchIsSelectedMarket={(value) => handleToggleMarket(value)}
             />

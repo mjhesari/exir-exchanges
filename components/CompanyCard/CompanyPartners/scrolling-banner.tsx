@@ -63,7 +63,7 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
           className={cn("flex max-w-96 items-stretch gap-[--gap]", {
             "flex-col": isVertical,
             "h-full": isVertical,
-            "animate-scrolling-banner": !isVertical,
+            "animate-scrolling-banner ": !isVertical,
             "animate-scrolling-banner-vertical": isVertical,
             "[animation-direction:reverse]": isReverse,
             "hover:[animation-play-state:paused]": shouldPauseOnHover,

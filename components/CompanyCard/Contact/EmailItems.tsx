@@ -1,8 +1,9 @@
 import { Icon } from "@iconify/react";
 import { Button } from "@nextui-org/react";
-import { Business } from "@/types/dataTypes";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-const ContactItems = ({
+import { Business } from "@/types/dataTypes";
+
+const EmailItems = ({
   exchangeData,
   dicts,
 }: {
@@ -11,11 +12,9 @@ const ContactItems = ({
 }) => {
   return (
     <div className="space-y-3">
-      {exchangeData?.phone?.map((e,index) => (
+      {/* {exchangeData?.mail?.length > 0 ? ( exchangeData?.mail?.map((e, index) => (
         <div className="flex items-center justify-between bg-gray-500/15 rounded-full p-2" key={index}>
-          <p className="text-base text-gray-700 ml-2">
-            {e.value}
-          </p>
+          <p className="text-base text-gray-700 ml-2" key={index}>{e}</p>
           <div className="flex gap-x-1">
             <Button
               size="sm"
@@ -35,9 +34,12 @@ const ContactItems = ({
             </Button>
           </div>
         </div>
-      ))}
+  ))
+  ) : (
+    <p>No emails available</p>
+  )} */}
     </div>
   );
 };
 
-export default ContactItems;
+export default EmailItems;

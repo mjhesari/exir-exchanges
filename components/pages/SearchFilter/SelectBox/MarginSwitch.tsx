@@ -1,11 +1,5 @@
-import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Switch } from "@nextui-org/react";
-
-interface SwitchMarginProps {
-  dicts:DictsTypes
-  SwitchSelectedMargin?: boolean;
-  setSwitchSelectedMargin: ((isSelected: boolean) => void) | undefined;
-}
+import { SwitchMarginProps } from "@/types/componentTypes";
 const MarginSwitch = ({
   dicts,
   setSwitchSelectedMargin,

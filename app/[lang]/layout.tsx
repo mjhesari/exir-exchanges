@@ -9,20 +9,8 @@ import { langsType, getDictionary } from "./dictionaries/dictionaries";
 import MainFooter from "@/components/Footer/MainFooter";
 import MobileNav from "@/components/Navbar/mobileNav";
 import NavTopLogo from "@/components/Navbar/navTopLogo";
+import { getExchangeData } from "@/utils/api";
 
-const getExchangeData = async () => {
-  try{
-    const data = await fetch(`${process.env.BASE_URL}/api/business`, {
-      headers: { Authorization: `Bearer ${process.env.TOKEN}` },
-    })
-    .then((response) => response.json())
-    .then((data) => data);
-    return{ data}
-  }
-  catch(error){
-    console.error("Error fetching LocalBusinessData:", error);
-    return { data: { Data:{} } };
-}}
 //* Local fonts
 const yekanBakh = localFont({
   src: "./fonts/YekanBakh-VF.woff2",
@@ -44,7 +32,7 @@ export default async function RootLayout({
   params,
 }: Readonly<{ children: React.ReactNode; params: { lang: langsType } }>) {
   const dicts = await getDictionary(params?.lang);
-  const {data}=await getExchangeData()
+  const {data}=await getExchangeData(1,24)
   const font = dicts.dir === "rtl" ? yekanBakh.className : roboto.className;
   return (
     <html lang={dicts.lang} dir={dicts.dir}>

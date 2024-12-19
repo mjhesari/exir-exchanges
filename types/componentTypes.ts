@@ -3,18 +3,12 @@ import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 // Select Components Types (FilterCard)
 export interface PaymentsSelectProps {
   dicts:DictsTypes
-  selectedPayments: string[];  
-  handlePaymentChange: (value: Set<string>) => void;
-  handleRemovePayment: (payment: string) => void; 
-}
+  selectedPayments: string[];  }
 
 
 export interface CurrenciesSelectProps {
   dicts:DictsTypes
-  selectedCurrencies: string[];
-  handleCurrencyChange: (value: Set<string>) => void;
-  handleRemoveCurrency: (currency: string) => void;
-}
+  selectedCurrencies: string[];}
 
 export interface Country {
   id: number;
@@ -36,6 +30,13 @@ export interface Country {
 
 export interface CategorySelectProps {
   dicts: DictsTypes;
-  handleChange: (selected: string[]) => void; // تابع تغییر
-  selectedCheckBox: string[]; // لیست انتخاب‌شده (مطابق با CheckboxGroup)
+  handleChange: (selected: string[]) => void; 
+  selectedCheckBox: string[]; 
+}
+
+
+export interface SwitchMarginProps {
+  dicts:DictsTypes
+  SwitchSelectedMargin?: boolean;
+  setSwitchSelectedMargin: ((isSelected: boolean) => void) | undefined;
 }

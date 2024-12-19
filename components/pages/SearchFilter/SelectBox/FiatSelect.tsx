@@ -5,6 +5,7 @@ import { fiatDespoit } from "@/utils/data/data";
 import { CurrenciesSelectProps } from "@/types/componentTypes";
 import { useDispatch } from "react-redux";
 import { setSelectedCurrencies } from "@/redux/features/filters/filter-slice";
+import { useCallback } from "react";
   
 const FiatSelect:React.FC<CurrenciesSelectProps> = ({
   selectedCurrencies,
@@ -13,10 +14,12 @@ const FiatSelect:React.FC<CurrenciesSelectProps> = ({
   const dispatch = useDispatch();
 
   // Dispatch function for updating currencies
-  const handleCurrencyChange = (value: Set<string>) => {
+  const handleCurrencyChange = useCallback(
+    (value: Set<string>) => {
       dispatch(setSelectedCurrencies(Array.from(value)));
-  };
-
+    },
+    [dispatch]
+  );
   // Dispatch function for removing a currency
   const handleRemoveCurrency = (currency: string) => {
       const updatedCurrencies = selectedCurrencies.filter(
@@ -28,9 +31,8 @@ const FiatSelect:React.FC<CurrenciesSelectProps> = ({
         <div className="flex flex-col gap-3">
               <h3 className="font-semibold">{dicts?.CardFilter?.fiatDeposite}</h3>
 
-              <div className="flex w-full flex-col md:flex-nowrap">
+              <div >
                 <Select
-                  className="max-w-xs"
                   aria-label="fiat-selector"
                   placeholder={`${dicts?.placeholder?.currencyChoose}`}
                   selectionMode="multiple"
@@ -49,6 +51,7 @@ const FiatSelect:React.FC<CurrenciesSelectProps> = ({
                 <div className="flex flex-wrap gap-2 mt-2">
                   {selectedCurrencies.map((currency) => (
                     <Chip
+                    className=" text-wrap h-full py-1"
                       key={currency}
                       variant="bordered"
                       onClose={() => handleRemoveCurrency(currency)}

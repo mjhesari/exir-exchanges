@@ -6,16 +6,16 @@ import { paymentMethods } from "@/utils/data/data";
 import { useDispatch } from "react-redux";
 import { setSelectedPayments } from "@/redux/features/filters/filter-slice";
 
-const PaymentSelect: React.FC<PaymentsSelectProps> = ({dicts, selectedPayments, handlePaymentChange, handleRemovePayment }) => {
+const PaymentSelect: React.FC<PaymentsSelectProps> = ({dicts, selectedPayments }) => {
   const dispatch = useDispatch();
 
   // Dispatch function for updating payments
-  const handlePaymentChangeInternal = (value: Set<string>) => {
+  const handlePaymentChange = (value: Set<string>) => {
     dispatch(setSelectedPayments(Array.from(value))); // ارسال به استور
   };
 
   // Dispatch function for removing a payment
-  const handleRemovePaymentInternal = (payment: string) => {
+  const handleRemovePayment = (payment: string) => {
     const updatedPayments = selectedPayments.filter(
       (selectedPayment) => selectedPayment !== payment
     );
@@ -28,12 +28,11 @@ const PaymentSelect: React.FC<PaymentsSelectProps> = ({dicts, selectedPayments, 
 
       <div className="flex w-full flex-col md:flex-nowrap">
         <Select
-          className="max-w-xs"
           aria-label="payment-selector"
           placeholder={`${dicts?.placeholder?.paymentChoose}`}
           selectionMode="multiple"
           selectedKeys={new Set(selectedPayments)}
-          onSelectionChange={(keys) => handlePaymentChangeInternal(keys as Set<string>)} >
+          onSelectionChange={(keys) => handlePaymentChange(keys as Set<string>)} >
           {paymentMethods.map((payment) => (
             <SelectItem key={payment.key} value={payment.key}>
               {payment.label}
@@ -45,8 +44,9 @@ const PaymentSelect: React.FC<PaymentsSelectProps> = ({dicts, selectedPayments, 
           {selectedPayments.map((payment) => (
             <Chip
               key={payment}
+              className=" text-wrap h-full py-1"
               variant="bordered"
-              onClose={() => handleRemovePaymentInternal(payment)} 
+              onClose={() => handleRemovePayment(payment)} 
             >
               {payment}
             </Chip>

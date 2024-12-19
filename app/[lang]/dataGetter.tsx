@@ -7,9 +7,6 @@ import { DataStructure } from "@/types/dataTypes";
 interface DataGetterProps {
   exchangeData: DataStructure | null;
 }
-
-//* Import components
-
 //* Redux actions
 import { setExchangeData } from "@/redux/features/data/data-slice";
 const DataGetter = ({ exchangeData }: DataGetterProps) => {
@@ -22,7 +19,7 @@ const DataGetter = ({ exchangeData }: DataGetterProps) => {
   }, [exchangeData,dispatch]);
 
   // Conditional rendering
-  if (exchangeData) {
+  if (!exchangeData) {
     return null;
   } else {
     <p>Loding</p>;

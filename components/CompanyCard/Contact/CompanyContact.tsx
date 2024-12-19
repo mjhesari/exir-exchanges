@@ -2,38 +2,26 @@ import { Icon } from "@iconify/react";
 import { Card } from "@nextui-org/card";
 import { Button } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+import ContactItems from "./ContactItems";
+import { Business } from "@/types/dataTypes";
+import EmailItems from "./EmailItems";
 
-const CompanyContact = ({ dicts }: { dicts?: DictsTypes }) => {
+const CompanyContact = ({
+  exchangeData,
+  dicts,
+}: {
+  exchangeData: Business ;
+  dicts: DictsTypes;
+}) => {
   return (
     <Card className="flex h-max rounded-lg border p-2" shadow="none">
       <h3 className="font-semibold text-lg p-3 px-5">
         {dicts?.infoContact.contact}
       </h3>
       <div className="space-y-4 my-2 mx-3">
-        
-        <div className="flex items-center justify-between bg-gray-500/15 rounded-full p-2">
-          <p className="text-base text-gray-700 mx-2" dir="ltr">
-            +98 51 3844 2277{" "}
-          </p>
-          <div className="flex justify-center place-content-center items-center gap-x-1">
-            <Button
-              size="sm"
-              isIconOnly
-              radius="full"
-              className="border-1 bg-transparent border-indigo-500 text-indigo-500"
-            >
-              <Icon icon="solar:copy-linear" width="20" />
-            </Button>
-            <Button
-              size="sm"
-              isIconOnly
-              className="border-1 bg-transparent border-indigo-500 text-indigo-500"
-              radius="full"
-            >
-              <Icon icon="solar:letter-linear" width="20" />
-            </Button>
-          </div>
-        </div>
+
+        <ContactItems exchangeData={exchangeData} dicts={dicts}/>
+        {/* <EmailItems exchangeData={exchangeData} dicts={dicts} /> */}
         <div className="flex justify-center place-content-center items-center gap-2">
           <Button
             className="w-full bg-green-500/20 text-green-500 hover:bg-green-300"

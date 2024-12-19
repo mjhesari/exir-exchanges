@@ -56,7 +56,6 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
           </Link>
         </NavbarItem>
       </NavbarContent>
-
       <NavbarContent justify="end" className="gap-4 flex-1">
         <NavbarItem>
           <Link

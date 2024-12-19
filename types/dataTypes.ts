@@ -174,12 +174,20 @@ export interface SiteData {
     zip?: string;
     city: string | number;
     region: string | number;
-    country: string | number;
+    geo?: string | null;
+    country: string ;
+    employeeCount: string;
+    currency:string
+    payment:string
+    market:boolean
+    margin:boolean
     phone: {
         title: string;
         value: string;
     }[];
-    mail?: string | null;
+    category:string;
+
+    mail?: string;
     workTime?: {
         [key: string]: {
             open: {
@@ -226,7 +234,6 @@ export interface SiteData {
     date: string;
     version: string | number;
     authorId: string;
-    geo?: string | null;
 }
 
  export interface DataStructure {

@@ -10,7 +10,7 @@ const MobileNav = ({ dicts }: { dicts: DictsTypes }) => {
   return (
     <>
       {/* Fixed Bottom Navigation */}
-      <div className=" fixed bottom-4 left-0 right-0 flex justify-center mx-3 z-20 lg:hidden">
+      <div className={`fixed bottom-4 left-0 right-0 flex justify-center mx-3 z-20 lg:hidden ${isOpen?"hidden":""}`}>
         <div className="bg-background/70 bg-white rounded-full p-4 gap-1 overflow-auto flex flex-row border justify-center">
           <Button
             variant="light"
@@ -25,20 +25,19 @@ const MobileNav = ({ dicts }: { dicts: DictsTypes }) => {
               />
             }
           ></Button>
-          {/* مونده کار */}
-          <div className="gap-4 overflow-x-auto flex flex-row px-3">
-            <Link href="#apps">{dicts?.menuSection?.mobileMenu?.apps}</Link>
-            <Link href="#social">{dicts?.menuSection?.mobileMenu?.social}</Link>
-            <Link href="#services">
+          <div className="gap-4 overflow-x-auto flex px-3 place-items-center ">
+            <Link href="#apps" className="min-w-max text-default-500">{dicts?.menuSection?.mobileMenu?.apps}</Link>
+            <Link href="#social" className="min-w-max text-default-500">{dicts?.menuSection?.mobileMenu?.social}</Link>
+            <Link href="#services" className="min-w-max text-default-500">
               {dicts?.menuSection?.mobileMenu?.services}
             </Link>
-            <Link href="#contact">
+            <Link href="#contact" className="min-w-max text-default-500">
               {dicts?.menuSection?.mobileMenu?.contact}
             </Link>
-            <Link href="#about">about</Link>
-            <Link href="#portfolio">portfolio</Link>
-            <Link href="#blog">blog</Link>
-            <Link href="#support">support</Link>
+            <Link href="#about" className="min-w-max text-default-500">About</Link>
+            <Link href="#portfolio" className="min-w-max text-default-500">portfolio</Link>
+            <Link href="#blog" className="min-w-max text-default-500">blog</Link>
+            <Link href="#support" className="min-w-max text-default-500">support</Link>
           </div>
         </div>
       </div>
@@ -48,7 +47,7 @@ const MobileNav = ({ dicts }: { dicts: DictsTypes }) => {
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="h-20">
+        <div className="h-10">
           {" "}
           <Button
             variant="light"
@@ -66,31 +65,34 @@ const MobileNav = ({ dicts }: { dicts: DictsTypes }) => {
             }
           ></Button>
         </div>
-        <div className="p-4 space-y-4 max-w-md mx-auto z-10">
+        <div className="p-2 space-y-4 max-w-md mx-auto z-10">
           <Link
-            href="#all-exchanges"
+            href="/"
             className="block py-2 hover:bg-default-100 rounded-lg px-4"
           >
             <span className="text-accent">
               {dicts?.menuSection?.mainNav?.allExchanges}
             </span>
           </Link>
+          <Divider  className="my-0" />
           <Link
-            href="#suggest"
+            href="/"
             className="block py-2 hover:bg-default-100 rounded-lg px-4"
           >
             <span className="text-accent">
               {dicts?.menuSection?.mainNav?.suggestAnExchange}
             </span>
           </Link>
-          <div className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4">
+          <Divider  className="my-0" />
+          <Link  href="/" className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4 text-default-900">
             <Icon icon="mdi:magnify" className="h-5 w-5 mr-2" />
             <span>{dicts?.button?.search}</span>
-          </div>
-          <div className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4">
+          </Link>
+          <Divider  className="my-0" />
+          <Link href="/languages" className="flex items-center py-2 hover:bg-default-100 rounded-lg px-4 text-default-900">
             <Icon icon="mdi:translate" className="h-5 w-5 mr-2" />
             <span className="mx-2">{dicts?.lang}</span>
-          </div>
+          </Link>
           <Button
             className="w-full"
             color="secondary"

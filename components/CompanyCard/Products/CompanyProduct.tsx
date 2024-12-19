@@ -9,12 +9,10 @@ const CompanyProduct = ({ dicts }: { dicts: DictsTypes }) => {
   return (
     <div className="rounded-lg border bg-white">
       <div>
-        <div className="p-6 ml-2">
           <SectionTitle>
           {dicts.productandService}
           </SectionTitle>
-        </div>
-        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4 w-full place-items-center p-8 pt-0">
+        <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full place-items-center p-4 pt-0">
           <Card className="border rounded-t-xl" shadow="none">
             <CardBody className="flex flex-col p-0">
               <Image alt="" className="rounded-b-none w-full" src={img6} />

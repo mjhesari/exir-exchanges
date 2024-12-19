@@ -1,76 +1,20 @@
 "use client";
 
-import React from "react";
-import Image, { StaticImageData } from "next/image";
 import Fancybox from "./fancy-box";
 import Link from "next/link";
-import { Card } from "@nextui-org/react";
-import img1 from "@/public/photo_2024-11-21_18-22-36.jpg";
-import img2 from "@/public/photo_2024-11-21_18-23-11.jpg";
-import img3 from "@/public/photo_2024-11-21_18-23-17.jpg";
-import img4 from "@/public/photo_2024-11-21_18-24-06.jpg";
-import img5 from "@/public/image-2.png";
-import img6 from "@/public/image-4.png";
+import { Business } from "@/types/dataTypes";
+import Image from "next/image";
 
-interface ImageData {
-  id: number;
-  src: StaticImageData;
-  alt: string;
-  size: string;
-  title: string;
-}
-
-const CompanyGallery: React.FC = () => {
-  const images: ImageData[] = [
-    {
-      id: 1,
-      src: img1,
-      alt: "Photo 1",
-      size: "row-span-2 col-span-2",
-      title: "Image 1",
-    },
-    {
-      id: 2,
-      src: img2,
-      alt: "Photo 2",
-      size: "row-span-1 col-span-2",
-      title: "Image 2",
-    },
-    {
-      id: 3,
-      src: img3,
-      alt: "Photo 3",
-      size: "row-span-1 col-span-1",
-      title: "Image 3",
-    },
-    {
-      id: 4,
-      src: img4,
-      alt: "Photo 4",
-      size: "row-span-1 col-span-1",
-      title: "Image 4",
-    },
-    {
-      id: 5,
-      src: img5,
-      alt: "Photo 5",
-      size: "",
-      title: "Image 5",
-    },
-    {
-      id: 6,
-      src: img6,
-      alt: "Photo 6",
-      size: "",
-      title: "Image 6",
-    },
+const CompanyGallery = ({ exchangeData }: { exchangeData: Business }) => {
+  const images = [
+    "row-span-2 col-span-2",
+    "row-span-1 col-span-2",
+    "row-span-1 col-span-1",
+    "row-span-1 col-span-1",
   ];
 
   return (
-    <Card
-      className="rounded-lg items-center justify-center border p-4"
-      shadow="none"
-    >
+    <div className="rounded-lg items-center justify-center border h-[60vh] max-h-[600px] relative bg-white">
       <Fancybox
         options={{
           Carousel: {
@@ -78,45 +22,53 @@ const CompanyGallery: React.FC = () => {
           },
         }}
       >
-        <div className="grid grid-cols-4 gap-5 place-items-center">
-          {images.map((image, index) => {
+        <div className="absolute inset-4 grid grid-cols-4 lg:grid-rows-2 gap-5 place-items-center">
+          {exchangeData?.media?.map((image, index) => {
             const isOverflow = index > 3;
-            const isOverflowStyle = `${isOverflow ? "absolute" : "relative"}`;
-            const isLastone=index===3
+            const isOverflowStyle = `${
+              isOverflow ? "absolute h-0 w-0" : "relative h-full w-full"
+            }`;
+            const isLastone = index === 3 && exchangeData.media && exchangeData?.media?.length - 4;
             return (
               <div
-                key={image.id}
-                className={`rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer ${image.size}`}
+                key={image?.src ?? index}
+                className={`rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer w-full  ${
+                  images[index] ?? ""
+                } ${isOverflowStyle}`}
               >
                 <Link
-                  className="block"
+                  className="block h-full w-full"
                   data-fancybox="gallery"
                   data-caption={image.title}
-                  href={image.src.src}
+                  href={image.src}
                 >
-                  {!isOverflow ? (
-                    <div
-                      className={`group overflow-hidden ${isOverflowStyle}`}
-                      data-aos="fade-up"
-                      data-aos-offset="100"
-                      data-aos-delay={index * 100}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        className="!relative w-full"
-                        placeholder="blur"
-                        />
-                        {isLastone ? <div className="bg-black/20 grid place-items-center absolute inset-0 text-6xl z-20 text-white">+{images.length - 4}</div>:null}
-                    </div>
-                  ) : null}
+                  <div className={`group overflow-hidden`}>
+                    <Image
+                    sizes="100vh"
+                      src={image.src}
+                      alt={image.title}
+                      fill
+                      className="inset-0 object-cover rounded-lg"
+                    />
+                    {isLastone ? (
+                      <div className="bg-black/30 grid place-items-center absolute inset-0 text-6xl z-20 text-white rounded-lg ">
+                        {exchangeData.media && exchangeData?.media?.length - 4
+                          ? `+${
+                              exchangeData.media
+                                ? exchangeData?.media?.length - 4
+                                : 0
+                            }`
+                          : ""}
+                      </div>
+                    ) : null}
+                  </div>
                 </Link>
               </div>
             );
           })}
         </div>
       </Fancybox>
-    </Card>
+    </div>
   );
 };
 

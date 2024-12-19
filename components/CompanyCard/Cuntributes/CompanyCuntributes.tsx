@@ -13,14 +13,14 @@ import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 const CompanyCuntributes = ({ dicts }: { dicts?: DictsTypes }) => {
   return (
     <div>
-      <Card className="rounded-lg border p-8" shadow="none">
-        <CardHeader className="flex flex-col justify-start items-start p-2">
-          <h3 className="font-semibold text-lg mb-4">{dicts?.contributors?.contributors}</h3>
-          <p className="font-semibold text-default-400 text-small space-y-4">
+      <Card className="rounded-lg border flex flex-col p-4" shadow="none">
+        <CardHeader className="flex flex-col justify-start items-start">
+          <h3 className="text-lg font-semibold items-center">{dicts?.contributors?.contributors}</h3>
+        </CardHeader>
+        <CardBody className="flex-col flex items-start gap-3">
+        <p className="font-semibold text-default-400 text-small space-y-4">
             this is the actual description the user has written
           </p>
-        </CardHeader>
-        <CardBody className="flex-row justify-between items-center">
           <AvatarGroup isBordered max={5} total={10}>
             <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
             <Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />

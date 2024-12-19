@@ -40,12 +40,19 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
     fetchCountries();
   }, []);
 
-  // Helper function to get country name by ISO code
   const getCountryName = (iso: string) => {
     const country = countries.find((c) => c.iso === iso);
-    return country?.tr.en || iso; // Return ISO if name is not found
+    return country?.tr.en || iso; 
   };
 
+  const getCountryIso = (name: string) => {
+    const country = countries.find((c) => c.tr.en === name);
+    return country?.iso || name; 
+  };
+  const handleSelectionChange = (keys: Set<string>) => {
+    const selectedNames = Array.from(keys).map((key) => getCountryName(key));
+    handleCountryChange(new Set(selectedNames));
+  };
   return (
     <div className="flex flex-col gap-3">
       <h3 className="font-semibold">{dicts?.CardFilter?.country}</h3>
@@ -55,8 +62,8 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
           placeholder={loading ? "Loading countries..." : `${dicts?.placeholder?.countryChoose}`}
           fullWidth
           selectionMode="multiple"
-          selectedKeys={new Set(selectedCountries)}
-          onSelectionChange={(keys) => handleCountryChange(keys as Set<string>)}
+          selectedKeys={ new Set(selectedCountries.map((name) => getCountryIso(name)))}
+          onSelectionChange={(keys) => handleSelectionChange(keys as Set<string>)}
           isDisabled={loading} 
         >
           {countries.map((country) => (
@@ -67,14 +74,14 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
         </Select>
       </div>
       <div className="flex flex-wrap gap-2">
-        {selectedCountries.map((countryIso) => (
+        {selectedCountries.map((countryName) => (
           <Chip
             className=" text-wrap h-full py-1"
-            key={countryIso}
+            key={countryName}
             variant="bordered"
-            onClose={() => handleRemoveCountry(countryIso)}
+            onClose={() => handleRemoveCountry(countryName)}
           >
-            {getCountryName(countryIso)}
+            {countryName}
           </Chip>
         ))}
       </div>

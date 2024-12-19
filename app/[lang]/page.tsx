@@ -1,4 +1,4 @@
-import { DictsTypes, getDictionary, langsType } from "@/app/[lang]/dictionaries/dictionaries";
+import {getDictionary, langsType } from "@/app/[lang]/dictionaries/dictionaries";
 import CardResult from "@/components/pages/SearchFilter/Result/CardResult";
 import FilterBar from "@/components/pages/SearchFilter/Filter";
 
@@ -11,5 +11,4 @@ const Home =async ({ params }: { params: { lang: langsType } }) => {
     </main>
   );
 };
-
 export default Home;
