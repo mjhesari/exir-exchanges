@@ -1,21 +1,34 @@
+"use client";
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import { category } from "@/utils/data/data";
-import { CategorySelectProps } from "@/types/componentTypes";
-const CategorySelect: React.FC<CategorySelectProps> = ({dicts,handleChange,selectedCheckBox}) => {
-    return (
-        <div className="flex flex-col gap-3 mt-4 ">
-              <h3 className="font-semibold">{dicts?.CardFilter.exchangeCategory}</h3>
-              <div className="flex flex-col gap-5">
-                <CheckboxGroup value={selectedCheckBox} onChange={handleChange} aria-label="category-exchange">
-                  {category.map((cate) => (
-                    <Checkbox value={cate} key={cate}>
-                      {cate}
-                    </Checkbox>
-                  ))}
-                </CheckboxGroup>
-              </div>
-            </div>
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { RootState } from "@/redux/app/store";
+import { setSelectedCategories } from "@/redux/features/filters/filter-slice";
+import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
+  const { selectedCategories } = useAppSelector(
+    (state: RootState) => state.filters
     );
-}
+    console.log('selectedCategories: ', selectedCategories);
+  const dispatch = useAppDispatch();
+  return (
+    <div className="flex flex-col gap-3 mt-4 ">
+      <h3 className="font-semibold">{dicts?.CardFilter.exchangeCategory}</h3>
+      <div className="flex flex-col gap-5">
+        <CheckboxGroup
+          value={selectedCategories}
+          onChange={(values) => dispatch(setSelectedCategories(values))}
+          aria-label="category-exchange"
+        >
+          {category.map((cate) => (
+            <Checkbox value={cate.id} key={cate.id}>
+              {cate.value}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
+      </div>
+    </div>
+  );
+};
 
 export default CategorySelect;

@@ -15,9 +15,9 @@ export function ExchangeCard({
     <Card className="cursor-pointer h-full">
       <CardHeader className="pt-1 px-3 flex-col items-start">
         <Image
-          alt={title[title?.[dicts?.lang ?? "fa"] ?? ""]}
+          alt={title[title?.[dicts?.lang ?? "fa"] ?? "No image"]}
           className="object-cover rounded-lg h-40 w-full"
-          src={image}
+          src={image??"undefined"}
         />
       </CardHeader>
       <CardBody className="pt-0 px-4 flex flex-col items-center justify-center">

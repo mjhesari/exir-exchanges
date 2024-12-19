@@ -32,7 +32,7 @@ export default async function RootLayout({
   params,
 }: Readonly<{ children: React.ReactNode; params: { lang: langsType } }>) {
   const dicts = await getDictionary(params?.lang);
-  const {data}=await getExchangeData(1,24)
+  const {data}=await getExchangeData(0,24)
   const font = dicts.dir === "rtl" ? yekanBakh.className : roboto.className;
   return (
     <html lang={dicts.lang} dir={dicts.dir}>

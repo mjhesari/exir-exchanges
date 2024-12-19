@@ -20,50 +20,34 @@ import {
   toggleSelectedMargin,
   resetFilters,
 } from "@/redux/features/filters/filter-slice";
-import { useCallback } from "react";
+import { useCallback, useEffect, useTransition } from "react";
+import { getExchangeData } from "@/utils/api";
+import { setExchangeData } from "@/redux/features/data/data-slice";
+
 const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
   const dispatch = useDispatch();
+  const [filterDataLoading, startFiltering] = useTransition();
 
-  const {
-    selectedCategories,
-    selectedCurrencies,
-    selectedPayments,
-    selectedCountries,
-    switchIsSelectedMarket,
-    switchIsSelectedMargin,
-  } = useSelector((state: RootState) => state.filters);
-
+  const filters = useSelector((state: RootState) => state.filters);
+  const exchangeData = useSelector((state: RootState) => state.data.data);
   const handleClearAll = useCallback(() => {
     dispatch(resetFilters());
   }, [dispatch]);
 
-  const handleCategoryChange = useCallback(
-    (value: string[]) => {
-      dispatch(setSelectedCategories(value));
-    },
-    [dispatch]
-  );
-
-  const handleCountryChange = useCallback(
-    (value: Set<string>) => {
-      dispatch(setSelectedCountries(Array.from(value)));
-    },
-    [dispatch]
-  );
-
-  const handleToggleMarket = useCallback(
-    (value: boolean) => {
-      dispatch(toggleSelectedMarket(value));
-    },
-    [dispatch]
-  );
-
-  const handleToggleMargin = useCallback(
-    (value: boolean) => {
-      dispatch(toggleSelectedMargin(value));
-    },
-    [dispatch]
-  );
+  const applyFilters = async () => {
+    await getExchangeData(0, 24, filters).then((data) =>
+      dispatch(setExchangeData(data.data))
+    );
+  };
+  
+  useEffect(() => {
+    const condition = Object.keys(filters).find(
+      (key) => filters[key as keyof typeof filters].length
+    )
+    if (!condition) {
+      startFiltering(() => applyFilters());
+    }
+  }, [filters]);
 
   return (
     <Card
@@ -73,64 +57,59 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
       <div className="p-5 flex flex-col">
         <div className="flex items-start flex-col">
           <SectionTitle>
-            <Icon icon="mdi:filter" width="24" height="24"/>{" "}
+            <Icon icon="mdi:filter" width="24" height="24" />{" "}
             {dicts?.CardFilter.filter}
           </SectionTitle>
-          {selectedCategories.length > 0 ||
-          selectedCurrencies.length > 0 ||
-          selectedPayments.length > 0 ||
-          switchIsSelectedMargin ||
-          switchIsSelectedMarket ||
-          selectedCountries.length > 0 ? (
-            <Button
-              onClick={handleClearAll}
-              className="text-purple-600 text-sm bg-transparent"
-              size="sm"
-              aria-label={`${dicts?.button.clearAll}`}
-              endContent={<Icon icon="lucide:x" width={15} />}
-            >
-              {dicts?.button.clearAll}
-            </Button>
-          ) : null}
+            {Object.keys(filters).find(
+              (key) => filters[key as keyof typeof filters].length
+            ) || filterDataLoading ? (
+              <Button
+                onClick={handleClearAll}
+                color="secondary"
+                variant="light"
+                size="sm"
+                aria-label={`${dicts?.button.clearAll}`}
+                endContent={<Icon icon="lucide:x" width={15} />}
+              >
+                {dicts?.button.clearAll}
+              </Button>
+            ) : null}
         </div>
         <div>
           <div className="flex flex-col gap-5">
-            <CategorySelect
-              dicts={dicts}
-              handleChange={handleCategoryChange}
-              selectedCheckBox={selectedCategories}
-            />
-            <Divider className="my-0"/>
-            <PaymentSelect dicts={dicts} selectedPayments={selectedPayments} />
-
-            <Divider className="my-0"/>
-            <FiatSelect
-              dicts={dicts}
-              selectedCurrencies={selectedCurrencies}
-            />
-            <Divider className="my-0"/>
+            <CategorySelect dicts={dicts} />
+            <Divider className="my-0" />
+            <PaymentSelect dicts={dicts} selectedPayments={[]} />
+            <Divider className="my-0" />
+            <FiatSelect dicts={dicts} selectedCurrencies={[]} />
+            <Divider className="my-0" />
             <CountrySelect
               dicts={dicts}
-              selectedCountries={selectedCountries}
-              handleCountryChange={(value) => handleCountryChange(value)}
+              selectedCountries={[]}
+              handleCountryChange={(value) =>
+                setSelectedCountries(Array.from(value))
+              }
               handleRemoveCountry={(country) =>
-                handleCountryChange(
-                  new Set(selectedCountries.filter((c) => c !== country))
-                )
+                setSelectedCountries([].filter((c) => c !== country))
               }
             />
             <Divider className="my-0" />
-            <MarginSwitch
-              dicts={dicts}
-              SwitchSelectedMargin={switchIsSelectedMargin}
-              setSwitchSelectedMargin={(value) => handleToggleMargin(value)}
-            />
+            <MarginSwitch dicts={dicts} />
             <Divider className="my-0" />
-            <MarketSwitch
-              dicts={dicts}
-              switchIsSelectedMarket={switchIsSelectedMarket}
-              setSwitchIsSelectedMarket={(value) => handleToggleMarket(value)}
-            />
+            <MarketSwitch dicts={dicts} />
+            <Divider className="my-0" />
+            <Button
+              onClick={() => startFiltering(() => applyFilters())}
+              aria-label="apply-filters"
+              isDisabled={
+                !Object.keys(filters).find(
+                  (key) => filters[key as keyof typeof filters].length
+                ) || filterDataLoading
+              }
+              isLoading={filterDataLoading}
+            >
+              Apply Filter
+            </Button>
           </div>
         </div>
       </div>

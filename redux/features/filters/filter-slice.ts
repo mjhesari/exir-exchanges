@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface FilterState {
+const marketAttributeKey = "f6bcb948-3e63-41ee-9c87-5e1e6cdd7604";
+  const marginAttributeKey = "dd9f7158-ca1b-4569-b04e-305f317af6ac"; 
+export interface FilterState {
   selectedCategories: string[];
   selectedCurrencies: string[];
   selectedPayments: string[];
   selectedCountries: string[];
-  switchIsSelectedMarket: boolean;
-  switchIsSelectedMargin: boolean;
+  switchIsSelectedMarket: string;
+  switchIsSelectedMargin: string;
 }
 
 const initialState: FilterState = {
@@ -14,8 +15,8 @@ const initialState: FilterState = {
   selectedCurrencies: [],
   selectedPayments: [],
   selectedCountries: [],
-  switchIsSelectedMarket: false,
-  switchIsSelectedMargin: false,
+  switchIsSelectedMarket: "",
+  switchIsSelectedMargin: "",
 };
 
 const filterSlice = createSlice({
@@ -35,18 +36,18 @@ const filterSlice = createSlice({
       state.selectedCountries = action.payload;
     },
     toggleSelectedMarket(state, action: PayloadAction<boolean>) {
-      state.switchIsSelectedMarket = action.payload;
+      state.switchIsSelectedMarket = action.payload?marketAttributeKey:"";
     },
     toggleSelectedMargin(state, action: PayloadAction<boolean>) {
-      state.switchIsSelectedMargin = action.payload;
+      state.switchIsSelectedMargin = action.payload?marginAttributeKey:"";
     },
     resetFilters(state) {
       state.selectedCategories = [];
       state.selectedCurrencies = [];
       state.selectedPayments = [];
       state.selectedCountries = [];
-      state.switchIsSelectedMarket = false;
-      state.switchIsSelectedMargin = false;
+      state.switchIsSelectedMarket = "";
+      state.switchIsSelectedMargin = "";
     },
   },
 });

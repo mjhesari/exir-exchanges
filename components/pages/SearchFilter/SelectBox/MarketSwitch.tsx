@@ -1,13 +1,12 @@
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { RootState } from "@/redux/app/store";
 import { Switch } from "@nextui-org/react";
+import { toggleSelectedMarket } from "@/redux/features/filters/filter-slice";
 
-interface SwitchMarketProps {
-  dicts:DictsTypes
-    switchIsSelectedMarket?: boolean;
-    setSwitchIsSelectedMarket: ((isSelected: boolean) => void) | undefined;
-  }
-
-const MarketSwitch = ({dicts,switchIsSelectedMarket,setSwitchIsSelectedMarket}:SwitchMarketProps) => {
+const MarketSwitch = ({dicts}:{dicts:DictsTypes}) => {
+  const dispatch=useAppDispatch()
+  const {switchIsSelectedMarket}=useAppSelector((state) => state.filters)
     return (
         <div className="flex flex-row justify-between items-center place-items-center gap-3">
               <h3 className="font-semibold">{dicts?.CardFilter?.marketWithFees}</h3>
@@ -15,8 +14,8 @@ const MarketSwitch = ({dicts,switchIsSelectedMarket,setSwitchIsSelectedMarket}:S
                 size="sm"
                 aria-label="market-switch"
                 color="secondary"
-                onValueChange={setSwitchIsSelectedMarket}
-                isSelected={switchIsSelectedMarket}
+                onValueChange={(isSelected)=>dispatch(toggleSelectedMarket(isSelected))}
+                isSelected={switchIsSelectedMarket?true:false}
               />
             </div>
     );

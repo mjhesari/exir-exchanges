@@ -14,79 +14,31 @@ import { setExchangeData } from "@/redux/features/data/data-slice";
 import { getExchangeData } from "@/utils/api";
 const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
   const exchangeData = useAppSelector((state) => state.data.data);
+  console.log('exchangeData: ', exchangeData);
   const dispatch = useAppDispatch();
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
+  
+  const filters = useAppSelector((state) => state.filters);
 
-  const {
-    selectedCategories,
-    selectedCurrencies,
-    selectedPayments,
-    selectedCountries,
-    switchIsSelectedMarket,
-    switchIsSelectedMargin,
-  } = useAppSelector((state) => state.filters);
-
-  const filteredData = useMemo(() => {
-    let filtered = exchangeData?.data || [];
-
-    if (selectedCategories.length > 0) {
-      filtered = filtered.filter((item) =>
-        selectedCategories.includes(item.category)
-      );
-    }
-    if (selectedCurrencies.length > 0) {
-      filtered = filtered.filter((item) =>
-        selectedCurrencies.includes(item.currency)
-      );
-    }
-    if (selectedPayments.length > 0) {
-      filtered = filtered.filter((item) =>
-        selectedPayments.includes(item.payment)
-      );
-    }
-    if (selectedCountries.length > 0) {
-      filtered = filtered.filter((item) =>
-        selectedCountries.some(
-          (country) => country.toLowerCase() === item.country.toLowerCase()
-        )
-      );
-    }
-    if (switchIsSelectedMarket) {
-      filtered = filtered.filter((item) => item.market === true);
-    }
-    if (switchIsSelectedMargin) {
-      filtered = filtered.filter((item) => item.margin === true);
-    }
-
-    return filtered;
-  }, [
-    exchangeData?.data,
-    selectedCategories,
-    selectedCurrencies,
-    selectedPayments,
-    selectedCountries,
-    switchIsSelectedMarket,
-    switchIsSelectedMargin,
-  ]);
-  useEffect(() => {
-    const getData = async () => {
-      setLoading(true);
-      try {
-        const res = await getExchangeData(pageIndex);
-        if (Array.isArray(res.data)) {
-          dispatch(setExchangeData([...(exchangeData?.data || []), ...res.data]));
-        } else {
-          console.error("Unexpected data format:", res.data);
-        }
-      } catch (error) {
-        console.error("Error while fetching exchange data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getData();
-  }, [pageIndex]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const res = await getExchangeData(pageIndex,24,filters);
+  //       if (Array.isArray(res.data)) {
+  //         dispatch(setExchangeData([...(exchangeData || []), ...res.data]));
+  //       } else {
+  //         console.error("Unexpected data format:", res.data);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error while fetching exchange data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getData();
+  // }, [pageIndex]);
   
   return (
     <Card
@@ -123,8 +75,8 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
         </div>
         <div>
           <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 py-3 md:gap-3 gap-y-4 lg:gap-3 sm:gap-x-3 px-0">
-            {filteredData.length > 0 ? (
-              filteredData.map((exchange, index) => (
+            {exchangeData.length > 0 ? (
+              exchangeData.map((exchange, index) => (
                 <Card
                   as={"a"}
                   href={`/${exchange.slug}/${exchange.publicId}`}
@@ -133,7 +85,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
                   <ExchangeCard
                     key={exchange.id || index}
                     dicts={dicts}
-                    image={exchange?.image}
+                    image={exchange?.image??''}
                     title={exchange.name}
                   />
                 </Card>
@@ -147,7 +99,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
           className="w-max mx-auto my-4"
           radius="full"
           variant="bordered"
-          startContent={<Spinner size="sm" color="secondary"/>}
+          startContent={loading?<Spinner size="sm" color="secondary"/>:""}
           onClick={() => setPageIndex(pageIndex + 1)}
           disabled={loading}
           aria-label="load-more"

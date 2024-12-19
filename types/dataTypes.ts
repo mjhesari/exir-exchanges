@@ -147,94 +147,94 @@ export interface SiteData {
     siteConfig: SiteConfig;
   }
 
- export interface Business {
+  export interface Business {
     id: string;
     publicId: string;
     slug: string;
     name: {
-        ar?: string;
-        en?: string;
-        fa: string;
+      ar?: string;
+      en?: string;
+      fa: string;
     };
     slogan?: {
-        en?: string;
-        fa?: string;
+      en?: string;
+      fa?: string;
     };
     defaultLanguage?: string;
     description?: {
-        en?: string;
-        fa: string;
-    };
+      en?: string;
+      fa: string;};
     type?: string[];
     industry?: string[];
-    tags?: string[];
-    image:string;
-    address: string;
-    borough?: string;
-    zip?: string;
-    city: string | number;
-    region: string | number;
+    tags?: string[]; 
+    image?: string | null | undefined;
+    address?: string | null;
+    borough?: string | null;
+    zip?: string | null;
+    city?: string | number | null; 
+    region?: string | number | null; 
     geo?: string | null;
-    country: string ;
-    employeeCount: string;
-    currency:string
-    payment:string
-    market:boolean
-    margin:boolean
-    phone: {
-        title: string;
-        value: string;
-    }[];
-    category:string;
-
-    mail?: string;
-    workTime?: {
-        [key: string]: {
-            open: {
-                hour: number;
-                minute: number;
-            };
-            close: {
-                hour: number;
-                minute: number;
-            };
-        }[];
-    };
-    logo?: {
-        url: string;
-        type: string;
-    }[] | null;
-    media?: {
-        src: string;
-        type: string;
-        title: string;
-        private: boolean;
-        position?: string;
-    }[];
-    color?: {
-        hex: string;
-        type: string;
-    }[] | null;
-    links?: {
-        url: string;
-        type: string;
-        title?: {
-            ar?: string;
-            en?: string;
-            fa?: string;
-        };
-    }[];
-    foundingLocation?: string;
-    foundingDate?: string | number;
+    country: string;
+    employeeCount?: string | null;
+    foundingLocation?: string | null;
+    foundingDate?: string | number | null; 
     parentId?: string | null;
-    relatedBusinessId?: string[];
-    attributes?: string[];
+    relatedBusinessId?: string[] | null;
     claimed: boolean;
     status: string;
-    date: string;
+    date: string; 
     version: string | number;
     authorId: string;
-}
+    phone?: {
+      title: string;
+      value: string;
+    }[];
+    mail?: {
+      title: string;
+      value: string;
+    }[]; 
+    workTime?: {
+      [key: string]: {
+        open: {
+          hour: number;
+          minute: number;
+        };
+        close: {
+          hour: number;
+          minute: number;
+        };
+      }[];
+    };
+    logo?: {
+      url: string;
+      type: string;
+    }[] | null;
+    media?: {
+      src: string;
+      type: string;
+      title: string;
+      private: boolean;
+      position?: string;
+    }[] | null;
+    color?: {
+      hex: string;
+      type: string;
+    }[] | null;
+    links?: {
+      url: string;
+      type: string;
+      title?: {
+        ar?: string;
+        en?: string;
+        fa?: string;
+      };
+    }[];
+    attributes?: {
+      key: string;
+      value: string | boolean | string[];
+    }[];
+  }
+  
 
  export interface DataStructure {
     data: Business[];

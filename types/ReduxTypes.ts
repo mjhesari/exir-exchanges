@@ -14,10 +14,8 @@ export type initialStateTypesLang = {
 };
 
 export interface DataState {
-  data: {
-    data: Business[];
-    details: {
-      count: number;
-    };
+  data: Business[];
+  details: {
+    count: number;
   };
 }

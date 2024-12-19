@@ -34,9 +34,3 @@ export interface CategorySelectProps {
   selectedCheckBox: string[]; 
 }
 
-
-export interface SwitchMarginProps {
-  dicts:DictsTypes
-  SwitchSelectedMargin?: boolean;
-  setSwitchSelectedMargin: ((isSelected: boolean) => void) | undefined;
-}
