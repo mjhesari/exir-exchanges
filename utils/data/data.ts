@@ -191,7 +191,7 @@ export const paymentMethods = [
   { key: "GooglePay", label: "GooglePay" },
 ];
 export const category = [
-  {id:"88317030-715b-4483-9663-591960a7009a", value:"cryptoExchanges"},
+  {id:"88317030-715b-4483-9663-591960a7009a", value:"Crypto Exchanges"},
   {id:"5c44d450-3805-4098-9f67-e9cd7fdb472a",value:"Decentralized Exchanges"},
   {id: "47754e79-f71d-47e2-8eeb-0f7445bce298",value:"Derivatives Exchanges"}
 ];

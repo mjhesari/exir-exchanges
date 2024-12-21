@@ -42,7 +42,7 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
     if (!condition) {
       startFiltering(() => applyFilters());
     }
-  }, [filters,applyFilters]);
+  }, [filters]);
 
   return (
     <Card
