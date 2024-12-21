@@ -1,4 +1,4 @@
-import MainBanner from "@/components/Banner/MainBanner";
+// import MainBanner from "@/components/Banner/MainBanner";
 import { CompanyDetails } from "@/components/CompanyCard/DetailsExchange/CompanyDetails";
 import { CompanyOverview } from "@/components/CompanyCard/Overview/CompanyOverview";
 import { getDictionary, langsType } from "../dictionaries/dictionaries";
@@ -6,13 +6,13 @@ import CompanyItemsCard from "@/components/CompanyCard/FeaturesExchange/CompanyI
 import CompanyContact from "@/components/CompanyCard/Contact/CompanyContact";
 import { CompanyLocCard } from "@/components/CompanyCard/Locaition/CompanyLoccard";
 import CompanyGallary from "@/components/CompanyCard/Gallery/CompanyGallary";
-import AdsCard from "@/components/CompanyCard/Ads/AdsCard";
+// import AdsCard from "@/components/CompanyCard/Ads/AdsCard";
 import CompanySocialMedia from "@/components/CompanyCard/SocialMedia/CompanySocialMedia";
-import CompanyProduct from "@/components/CompanyCard/Products/CompanyProduct";
+// import CompanyProduct from "@/components/CompanyCard/Products/CompanyProduct";
 import CompanyHoldApp from "@/components/CompanyCard/HoldingApp/CompanyHoldApp";
 import CompanyCuntributes from "@/components/CompanyCard/Cuntributes/CompanyCuntributes";
 import CompanyPartners from "@/components/CompanyCard/Partners/CompanyPartners";
-import CompanyComments from "@/components/CompanyCard/Comments/CompanyComments";
+// import CompanyComments from "@/components/CompanyCard/Comments/CompanyComments";
 import { Business } from "@/types/dataTypes";
 
 const getdataExchange = async (id: string) => {
@@ -58,14 +58,14 @@ export default async function Home({
             <CompanyItemsCard exchangeData={exchangeData} dicts={dicts} />
             {/* <CompanyProduct dicts={dicts} /> */}
             <CompanyGallary exchangeData={exchangeData}/>
-            <CompanyPartners dicts={dicts} />
+            <CompanyPartners  />
             {/* <CompanyComments/> */}
           </div>
           <div className="space-y-5 mx-5 lg:mx-0">
             <CompanyContact dicts={dicts} exchangeData={exchangeData} />
             <CompanyLocCard dicts={dicts} exchangeData={exchangeData}/>
             {/* <AdsCard /> */}
-            <CompanySocialMedia dicts={dicts} exchangeData={exchangeData}/>
+            <CompanySocialMedia dicts={dicts}/>
             <CompanyHoldApp dicts={dicts} />
             <CompanyCuntributes dicts={dicts} />
           </div>

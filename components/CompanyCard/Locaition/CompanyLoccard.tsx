@@ -2,8 +2,6 @@
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 import { Icon } from "@iconify/react";
-import Img1 from "@/public/image 39.png";
-import Image from "next/image";
 import StaticMap from "./static-map";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Business } from "@/types/dataTypes";

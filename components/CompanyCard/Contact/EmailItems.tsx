@@ -1,15 +1,6 @@
-import { Icon } from "@iconify/react";
-import { Button } from "@nextui-org/react";
-import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { Business } from "@/types/dataTypes";
 
-const EmailItems = ({
-  exchangeData,
-  dicts,
-}: {
-  exchangeData: Business;
-  dicts: DictsTypes;
-}) => {
+
+const EmailItems = () => {
   return (
     <div className="space-y-3">
       {/* {exchangeData?.mail?.length > 0 ? ( exchangeData?.mail?.map((e, index) => (

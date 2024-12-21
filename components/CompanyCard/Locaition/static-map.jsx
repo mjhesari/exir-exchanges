@@ -9,10 +9,10 @@ import { convertToObjectLocation } from '@/utils/functions/functions';
 //* Import components
 import 'leaflet/dist/leaflet.css';
 import markerSrc from '@/public/marker.png';
+import leaflet from "leaflet"
 
 let Marker; 
 if (typeof window !== 'undefined') {
-  const leaflet = require('leaflet');
   Marker = leaflet.icon({
     iconUrl: markerSrc.src,
     iconSize: [32, 32],

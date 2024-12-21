@@ -1,13 +1,10 @@
 import { Icon } from "@iconify/react";
 import { Button, Card } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { Business } from "@/types/dataTypes";
 
 const CompanySocialMedia = ({
-  exchangeData,
   dicts,
 }: {
-  exchangeData: Business;
   dicts: DictsTypes;
 }) => {
   return (

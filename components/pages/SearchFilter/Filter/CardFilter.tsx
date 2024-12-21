@@ -12,12 +12,7 @@ import MarketSwitch from "../SelectBox/MarketSwitch";
 import MarginSwitch from "../SelectBox/MarginSwitch";
 import { RootState } from "@/redux/app/store";
 import {
-  setSelectedCategories,
-  setSelectedCurrencies,
-  setSelectedPayments,
   setSelectedCountries,
-  toggleSelectedMarket,
-  toggleSelectedMargin,
   resetFilters,
 } from "@/redux/features/filters/filter-slice";
 import { useCallback, useEffect, useTransition } from "react";
@@ -29,7 +24,7 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
   const [filterDataLoading, startFiltering] = useTransition();
 
   const filters = useSelector((state: RootState) => state.filters);
-  const exchangeData = useSelector((state: RootState) => state.data.data);
+  // const exchangeData = useSelector((state: RootState) => state.data.data);
   const handleClearAll = useCallback(() => {
     dispatch(resetFilters());
   }, [dispatch]);
@@ -47,7 +42,7 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
     if (!condition) {
       startFiltering(() => applyFilters());
     }
-  }, [filters]);
+  }, [filters,applyFilters]);
 
   return (
     <Card

@@ -1,13 +1,11 @@
 import { Icon } from "@iconify/react";
 import { Button } from "@nextui-org/react";
 import { Business } from "@/types/dataTypes";
-import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
+// import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 const ContactItems = ({
   exchangeData,
-  dicts,
 }: {
   exchangeData: Business;
-  dicts: DictsTypes;
 }) => {
   return (
     <div className="space-y-3">

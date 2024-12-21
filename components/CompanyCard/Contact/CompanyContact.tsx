@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import ContactItems from "./ContactItems";
 import { Business } from "@/types/dataTypes";
-import EmailItems from "./EmailItems";
+// import EmailItems from "./EmailItems";
 
 const CompanyContact = ({
   exchangeData,
@@ -20,7 +20,7 @@ const CompanyContact = ({
       </h3>
       <div className="space-y-4 my-2 mx-3">
 
-        <ContactItems exchangeData={exchangeData} dicts={dicts}/>
+        <ContactItems exchangeData={exchangeData} />
         {/* <EmailItems exchangeData={exchangeData} dicts={dicts} /> */}
         <div className="flex justify-center place-content-center items-center gap-2">
           <Button

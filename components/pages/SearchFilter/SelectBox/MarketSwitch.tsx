@@ -1,6 +1,5 @@
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { RootState } from "@/redux/app/store";
 import { Switch } from "@nextui-org/react";
 import { toggleSelectedMarket } from "@/redux/features/filters/filter-slice";
 

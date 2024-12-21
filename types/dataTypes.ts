@@ -101,7 +101,7 @@ export interface SiteData {
   
   interface SiteConfig {
     id: string;
-    users: any[];
+    users: string[];
     domain: string;
     lang: string;
     dir: string;

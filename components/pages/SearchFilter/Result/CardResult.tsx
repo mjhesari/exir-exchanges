@@ -4,21 +4,20 @@ import {
   Card,
   Select,
   SelectItem,
-  Spinner,
 } from "@nextui-org/react";
 import { ExchangeCard } from "./ExchangeCard";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { useEffect, useMemo, useState } from "react";
-import { setExchangeData } from "@/redux/features/data/data-slice";
-import { getExchangeData } from "@/utils/api";
+import { useAppSelector } from "@/redux/app/hooks";
+import { useState } from "react";
+// import { setExchangeData } from "@/redux/features/data/data-slice";
+// import { getExchangeData } from "@/utils/api";
 const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
   const exchangeData = useAppSelector((state) => state.data.data);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const [pageIndex, setPageIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   
-  const filters = useAppSelector((state) => state.filters);
+  // const filters = useAppSelector((state) => state.filters);
 
   // useEffect(() => {
   //   const getData = async () => {
@@ -98,9 +97,9 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
           className="w-max mx-auto my-4"
           radius="full"
           variant="bordered"
-          startContent={loading?<Spinner size="sm" color="secondary"/>:""}
+          // startContent={loading?<Spinner size="sm" color="secondary"/>:""}
           onClick={() => setPageIndex(pageIndex + 1)}
-          disabled={loading}
+          // disabled={loading}
           aria-label="load-more"
         >
           Load more

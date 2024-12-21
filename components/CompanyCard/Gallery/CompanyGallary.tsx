@@ -16,6 +16,7 @@ const CompanyGallery = ({ exchangeData }: { exchangeData: Business }) => {
   return (
     <div className="rounded-lg items-center justify-center border h-[60vh] max-h-[600px] relative bg-white">
       <Fancybox
+      delegate="[data-fancybox]"
         options={{
           Carousel: {
             infinite: false,
