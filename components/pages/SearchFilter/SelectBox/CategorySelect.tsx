@@ -2,12 +2,11 @@
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import { category } from "@/utils/data/data";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { RootState } from "@/redux/app/store";
 import { setSelectedCategories } from "@/redux/features/filters/filter-slice";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
   const { selectedCategories } = useAppSelector(
-    (state: RootState) => state.filters
+    (state) => state.filters
     );
   const dispatch = useAppDispatch();
   return (
@@ -18,6 +17,7 @@ const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
           value={selectedCategories}
           onChange={(values) => dispatch(setSelectedCategories(values))}
           aria-label="category-exchange"
+          color="secondary"
         >
           {category.map((cate) => (
             <Checkbox value={cate.id} key={cate.id}>

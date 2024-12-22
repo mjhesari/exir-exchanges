@@ -16,7 +16,7 @@ const left=dicts.dir==="rtl"? "left":"right"
     <div className="lg:hidden">
       <Button
         onPress={onOpen}
-        className="bg-white border w-max text-lg"
+        className="bg-white border w-max text-lg ms-3"
         startContent={<Icon icon="mdi:filter" width="24" height="24" />}
       >
         {dicts?.CardFilter?.filter}

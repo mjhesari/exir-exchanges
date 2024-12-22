@@ -6,50 +6,41 @@
   "exchangeName": "صرافی اکسیر",
   "langName": "فارسی",
   "menuSection": {
-    "mainNav":{
-    "allExchanges": "همه صرافی ها",
-    "suggestAnExchange": "صرافی پیشنهادی"
+    "mainNav": {
+      "allExchanges": "همه صرافی ها",
+      "suggestAnExchange": "صرافی پیشنهادی"
     },
-    "mobileMenu":{
-      "apps":"برنامه ها",
-      "services":"سرویس ها",
-      "social":"شبکه های اجتماعی",
-      "contact":"تماس"
+    "mobileMenu": {
+      "apps": "برنامه ها",
+      "services": "سرویس ها",
+      "social": "شبکه های اجتماعی",
+      "contact": "تماس"
     }
   },
-  "placeholder":{ "search":"جستجو...",
-  "paymentChoose":"روش پرداخت انتخاب کن",
-  "currencyChoose":"پول ارزی انتخاب کن"
-  ,"countryChoose":"کشور انتخاب کن"},
-  
+  "placeholder": {
+    "search": "جستجو...",
+    "paymentChoose": "روش پرداخت انتخاب کن",
+    "currencyChoose": "پول ارزی انتخاب کن",
+    "countryChoose": "کشور انتخاب کن"
+  },
+
   "button": {
     "clearAll": "پاک کردن همه",
     "navigate": "مسیریابی ",
     "contribute": "مشارکت کردن",
     "tryItNow": "همین حالا امتحان کنید",
     "seeallcontribute": "مشاهده همه مشارکت‌کنندگان",
-    "search":"جستجو",
-    "manageProfile":"مدیریت پروفایل",
-    "countributeToEarn":"مشارکت برای کسب درآمد"
+    "search": "جستجو",
+    "manageProfile": "مدیریت پروفایل",
+    "countributeToEarn": "مشارکت برای کسب درآمد"
   },
   "cardDetails": {
-    "companyType": "نوع شرکت",
-    "founded": "سال تاسیس",
+    "exchangeType": "نوع صرافی",
+    "IncorporationCountry": "کشور صرافی ",
     "areaServed": "منطقه خدمات دهی",
     "revenue": "درآمد",
     "NumberofEmployees": "تعداد  کارمندان",
-    "Founders": "بنیان گذاران"
-  },
-  "cardCompanyItemsDetails": {
-    "nameCompany": "صرافی پارسین",
-    "1": "- خرید و فروش انواع ارزهای کاغذی و زیورآلات طلایی",
-    "2": "- Buying and selling currency in the Nimai system of the CentralBank of the Islamic Republic of Iran",
-    "3": " - Sending corporate and personal currency remittances to all parts of the world by providing an official invoice",
-    "4": "- Buying and selling of EIH and Kunlun remittances",
-    "5": " - Cash transfer delivery to neighbors (Iraq, Afghanistan, Oman,UAE, Türkiye, etc.), Europe and Canada, etc.",
-    "6": "- Importing foreign investors' currency by providing an official invoice",
-    "7": "- Advice on buying and selling digital currency (cryptocurrency).",
-    "8": "- The first free consultation center for bills, remittances,credit opening, digital currency, coins and musukuk"
+    "Founding": "سال تاسیس"
   },
   "infoContact": {
     "contact": "اطلاعات تماس و ارتباط"
@@ -67,25 +58,24 @@
     "privacy": "حریم خصوصی",
     "docs": "مستندات",
     "security": "امنیت",
-    "aboutExir":"درباره اکسیر"
-
+    "aboutExir": "درباره اکسیر"
   },
   "CardFilter": {
     "filter": "مرتب سازی",
     "exchangeCategory": "دسته بندی صرافی ها",
     "fiatDeposite": "واریز پول ارزی",
     "country": "کشور",
-    "acceptedPaymentMethods":"روش های پرداخت تایید شده",
-    "marginTrading":"معامله اهرمی",
-    "marketWithFees":"بازار با کارمزد"
+    "acceptedPaymentMethods": "روش های پرداخت تایید شده",
+    "marginTrading": "معامله اهرمی",
+    "marketWithFees": "بازار با کارمزد"
   },
-  "CardResult":{
-    "selector":{
-      "relevant":"مرتبط",
-      "newest":"جدیدترین",
-      "oldest":"قدیمی ترین"
+  "CardResult": {
+    "selector": {
+      "relevant": "مرتبط",
+      "newest": "جدیدترین",
+      "oldest": "قدیمی ترین"
     },
-    "exchanges":"صرافی ها",
-    "sortBy":"بر اساس"
+    "exchanges": "صرافی ها",
+    "sortBy": "بر اساس"
   }
 }

@@ -7,7 +7,7 @@ import { Roboto } from "next/font/google";
 import MainProviders from "./providers/main-provider";
 import { langsType, getDictionary } from "./dictionaries/dictionaries";
 import MainFooter from "@/components/Footer/MainFooter";
-import MobileNav from "@/components/Navbar/mobileNav";
+// import MobileNav from "@/components/Navbar/mobileNav";
 import NavTopLogo from "@/components/Navbar/navTopLogo";
 import { getExchangeData } from "@/utils/api";
 
@@ -23,8 +23,8 @@ const roboto = Roboto({
 
 //* Set meta tags
 export const metadata: Metadata = {
-  title: "Exir Exchange",
-  description: "Exir Exchange",
+  title: "Exchange Hub",
+  description: "Exchange Hub",
 };
 
 export default async function RootLayout({
@@ -41,7 +41,7 @@ export default async function RootLayout({
           <NavTopLogo dicts={dicts}/>
           <MainNavbar dicts={dicts} />
           {children}
-          <MobileNav dicts={dicts}/>
+          {/* <MobileNav dicts={dicts}/> */}
           <MainFooter dicts={dicts} />
         </MainProviders>
       </body>

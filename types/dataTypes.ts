@@ -164,9 +164,9 @@ export interface SiteData {
     description?: {
       en?: string;
       fa: string;};
-    type?: string[];
-    industry?: string[];
-    tags?: string[]; 
+    type?: {[key:string]: string}[];
+    industry?: {[key:string]: string}[];
+    tags?: {[key:string]: string}[]; 
     image?: string | null | undefined;
     address?: string | null;
     borough?: string | null;
@@ -241,4 +241,13 @@ export interface SiteData {
     details: {
         count: number;
     };
+}
+
+
+export interface CountryType{
+  id: number,
+        tr: {[key:string]:string},
+        code: string,
+        iso: string,
+        lang: {[key:string]:string}[]
 }

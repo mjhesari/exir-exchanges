@@ -22,7 +22,7 @@
     "search": "Search...",
     "paymentChoose": "Choose Payment Methods",
     "currencyChoose": "Choose Currencies",
-    "countryChoose": "Choose Countries"
+    "countryChoose": "Choose Country"
   },
   "button": {
     "clearAll": "Clear all",
@@ -35,23 +35,12 @@
     "countributeToEarn":"Contribute To Earn"
   },
   "cardDetails": {
-    "companyType": "CompanyType",
-    "founded": "Founded In",
+    "exchangeType": "ExchangeType",
+    "IncorporationCountry": "Incorporation Country",
     "areaServed": "Area Served",
     "revenue": "Revenue",
     "NumberofEmployees": "Number Of Employees",
-    "Founders": "Founders"
-  },
-  "cardCompanyItemsDetails": {
-    "nameCompany": "Parsin Exchange",
-    "1": "- Buying and selling all paper letters and gold ornaments",
-    "2": "- Buying and selling currency in the Nimai system of the CentralBank of the Islamic Republic of Iran",
-    "3": " - Sending corporate and personal currency remittances to all parts of the world by providing an official invoice",
-    "4": "- Buying and selling of EIH and Kunlun remittances",
-    "5": " - Cash transfer delivery to neighbors (Iraq, Afghanistan, Oman,UAE, Türkiye, etc.), Europe and Canada, etc.",
-    "6": "- Importing foreign investors' currency by providing an official invoice",
-    "7": "- Advice on buying and selling digital currency (cryptocurrency).",
-    "8": "- The first free consultation center for bills, remittances,credit opening, digital currency, coins and musukuk"
+    "Founding": "Year Established"
   },
   "infoContact": {
     "contact": "Contact Info"

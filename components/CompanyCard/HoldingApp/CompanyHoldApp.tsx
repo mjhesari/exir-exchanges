@@ -6,31 +6,31 @@ import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 const CompanyHoldApp = ({ dicts }: { dicts: DictsTypes }) => {
   return (
     <div>
-      <Card className="flex rounded-lg border p-8" shadow="none">
+      <Card className="flex border p-2" shadow="none">
         <CardHeader>
-          <h3 className="font-semibold text-lg ml-2">{dicts.holdingApp}</h3>
+          <h3 className="font-semibold text-lg">{dicts.holdingApp}</h3>
         </CardHeader>
         <CardBody className="flex-row justify-between items-center">
           <div>
-            <Button size="lg" isIconOnly radius="full">
+            <Button size="lg">
               <Icon icon="logos:google-play-icon" width="30" />
             </Button>
           </div>
           <Divider orientation="vertical" className="h-5" />
           <div>
-            <Button size="lg" isIconOnly radius="full">
+            <Button size="lg" >
               <Icon icon="logos:apple-app-store" width="30" />
             </Button>
           </div>
           <Divider orientation="vertical" className="h-5" />
           <div>
-            <Button size="lg" isIconOnly radius="full">
+            <Button size="lg" >
               <Icon icon="logos:chrome" width="30" />
             </Button>
           </div>
           <Divider orientation="vertical" className="h-5" />
           <div>
-            <Button size="lg" isIconOnly radius="full">
+            <Button size="lg">
               <Icon icon="logos:microsoft-icon" width="30" />
             </Button>
           </div>

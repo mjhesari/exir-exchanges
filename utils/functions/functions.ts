@@ -20,3 +20,6 @@ export const convertToObjectLocation = (location: string) => {
         ).toLocaleString(), 
       }; 
 }
+
+export const convertToPhoneNumber = (number: string) =>
+  number.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, "$1 $2 $3 $4");

@@ -1,7 +1,7 @@
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
-
+import { Icon } from "@iconify/react";
 export function ExchangeCard({
   dicts,
   image,
@@ -13,14 +13,17 @@ export function ExchangeCard({
 }) {
   return (
     <Card className="cursor-pointer h-full">
-      <CardHeader className="pt-1 px-3 flex-col items-start">
+      <CardHeader className="flex-col items-start p-0 rounded-b-none">
+        <div className="object-cover rounded-lg h-40 w-full bg-default-300 flex justify-center items-center flex-col rounded-b-none">
+        <Icon icon="carbon:no-image" className="text-white" width="32" height="32" />
+        </div>
         <Image
-          alt={title[title?.[dicts?.lang ?? "fa"] ?? "No image"]}
-          className="object-cover rounded-lg h-40 w-full"
-          src={image??"undefined"}
+          alt={title[title?.[dicts?.lang ?? "fa"] ??""]}
+          className="object-cover rounded-lg h-40 w-full bg-zinc-500 hidden"
+          src={image??""}
         />
       </CardHeader>
-      <CardBody className="pt-0 px-4 flex flex-col items-center justify-center">
+      <CardBody className="flex flex-col items-start justify-center pt-2">
           <h4 className="font-semibold">
             {title?.[dicts?.lang ?? "fa"] ?? ""}
           </h4>

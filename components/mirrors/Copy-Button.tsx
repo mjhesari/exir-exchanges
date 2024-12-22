@@ -4,9 +4,9 @@
 import { useState } from 'react';
 
 //* Import components
-import Image from 'next/image';
 import { Button } from '@nextui-org/react';
 import toast from 'react-hot-toast';
+import { Icon } from '@iconify-icon/react';
 
 //* Import services
 
@@ -30,19 +30,12 @@ const Copier = ({ value }: { value: string }) => {
     <Button
       isIconOnly
       onClick={copyValue}
-      className='bg-white'
-    >
-      <Image
-        className='transition-all'
-        src='/icons/copy-outline.svg'
-        alt='Copy icon'
-        width={isCopied ? 0 : 25}
-        height={25}
-      />
-      <Image
-        className='transition-all'
-        src='/icons/tick.svg'
-        alt='Copy icon'
+      size='sm'
+      radius='full'
+      className='bg-transparent border-indigo-500 border'    >
+      <Icon icon="solar:copy-linear" className='transition-all text-indigo-500' width={isCopied ? 0 : 20}  height={20}/>
+      <Icon icon="line-md:circle-twotone-to-confirm-circle-transition"
+        className='transition-all text-indigo-500'
         width={isCopied ? 25 : 0}
         height={25}
       />

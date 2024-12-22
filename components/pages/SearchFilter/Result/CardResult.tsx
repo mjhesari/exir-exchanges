@@ -2,41 +2,40 @@
 import {
   Button,
   Card,
-  Select,
-  SelectItem,
+  Spinner,
 } from "@nextui-org/react";
 import { ExchangeCard } from "./ExchangeCard";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { useAppSelector } from "@/redux/app/hooks";
-import { useState } from "react";
-// import { setExchangeData } from "@/redux/features/data/data-slice";
-// import { getExchangeData } from "@/utils/api";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import { useEffect, useState } from "react";
+import { setExchangeData } from "@/redux/features/data/data-slice";
+import { getExchangeData } from "@/utils/api";
 const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
   const exchangeData = useAppSelector((state) => state.data.data);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [pageIndex, setPageIndex] = useState(0);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   
-  // const filters = useAppSelector((state) => state.filters);
+  const filters = useAppSelector((state) => state.filters);
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const res = await getExchangeData(pageIndex,24,filters);
-  //       if (Array.isArray(res.data)) {
-  //         dispatch(setExchangeData([...(exchangeData || []), ...res.data]));
-  //       } else {
-  //         console.error("Unexpected data format:", res.data);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error while fetching exchange data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   getData();
-  // }, [pageIndex]);
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      try {
+        const res = await getExchangeData(pageIndex,24,filters);
+        if (Array.isArray(res.data)) {
+          dispatch(setExchangeData([...(exchangeData || []), ...res.data]));
+        } else {
+          console.error("Unexpected data format:", res.data);
+        }
+      } catch (error) {
+        console.error("Error while fetching exchange data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, [pageIndex]);
   
   return (
     <Card
@@ -48,7 +47,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
           <h2 className="text-2xl font-semibold p-4">
             {dicts?.CardResult?.exchanges}
           </h2>
-          <div className="flex flex-row justify-center items-center">
+          {/* <div className="flex flex-row justify-center items-center">
             <span className="text-xs">{dicts?.CardResult?.sortBy}</span>
             <Select
             aria-label="select-by-sort"
@@ -69,7 +68,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
                 {dicts?.CardResult?.selector?.oldest}
               </SelectItem>
             </Select>
-          </div>
+          </div> */}
         </div>
         <div>
           <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 py-3 md:gap-3 gap-y-4 lg:gap-3 sm:gap-x-3 px-0">
@@ -97,9 +96,9 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
           className="w-max mx-auto my-4"
           radius="full"
           variant="bordered"
-          // startContent={loading?<Spinner size="sm" color="secondary"/>:""}
+          startContent={loading?<Spinner size="sm" color="secondary"/>:""}
           onClick={() => setPageIndex(pageIndex + 1)}
-          // disabled={loading}
+          disabled={loading}
           aria-label="load-more"
         >
           Load more

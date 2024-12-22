@@ -9,7 +9,6 @@ import {
 import Logo from "./Logo";
 import SearchInput from "./SearchInput";
 import { Icon } from "@iconify/react";
-import UserAvatar from "./UserAvatar";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 
 export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
@@ -22,7 +21,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
       <NavbarBrand className=" max-w-60">
         <Link href="/" className="flex items-center gap-3 text-black">
           <Logo />
-          <h1>{dicts.exchangeName}</h1>
+          <h1>Exchange Hub</h1>
         </Link>
       </NavbarBrand>
       <NavbarContent
@@ -44,7 +43,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
           <SearchInput dicts={dicts} />
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent className="flex-1 gap-6 " justify="center">
+      {/* <NavbarContent className="flex-1 gap-6 " justify="center">
         <NavbarItem>
           <Link href="/" className="text-black">
             {dicts?.menuSection?.mainNav?.allExchanges}
@@ -55,19 +54,24 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
             {dicts?.menuSection?.mainNav?.suggestAnExchange}
           </Link>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarContent justify="end" className="gap-4 flex-1">
         <NavbarItem>
-          <Link
-            href="/languages"
-            aria-label="language page"
-            className="text-black"
-          >
-            {dicts?.lang}
-            <Icon icon="uil:angle-down" width="1.4rem" height="1.4rem" />
-          </Link>
+        <Button
+              as="a"
+              variant="bordered"
+              size="sm"
+              className="text-default-500 rounded-xl hover:text-secondary-600 hover:border-secondary-600"
+              href="/languages"
+              aria-label="language page"
+              startContent={
+                <Icon icon="mdi:translate" className="h-4 w-4" />
+              }
+            >
+              Languages
+            </Button>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <UserAvatar />
         </NavbarItem>
         <NavbarItem>
@@ -78,7 +82,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
             <Icon icon="hugeicons:credit-card" width="1.4rem" height="1.4rem" />{" "}
             {dicts.contributors.contributors}
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
     </Navbar>
   );

@@ -1,5 +1,4 @@
 "use client";
-import { useDispatch, useSelector } from "react-redux";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Icon } from "@iconify-icon/react";
 import { Button, Card, Divider } from "@nextui-org/react";
@@ -10,20 +9,19 @@ import PaymentSelect from "../SelectBox/PaymentSelect";
 import CategorySelect from "../SelectBox/CategorySelect";
 import MarketSwitch from "../SelectBox/MarketSwitch";
 import MarginSwitch from "../SelectBox/MarginSwitch";
-import { RootState } from "@/redux/app/store";
 import {
-  setSelectedCountries,
   resetFilters,
 } from "@/redux/features/filters/filter-slice";
 import { useCallback, useEffect, useTransition } from "react";
 import { getExchangeData } from "@/utils/api";
 import { setExchangeData } from "@/redux/features/data/data-slice";
+import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
 
 const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [filterDataLoading, startFiltering] = useTransition();
 
-  const filters = useSelector((state: RootState) => state.filters);
+  const filters = useAppSelector((state) => state.filters);
   // const exchangeData = useSelector((state: RootState) => state.data.data);
   const handleClearAll = useCallback(() => {
     dispatch(resetFilters());
@@ -80,13 +78,6 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
             <Divider className="my-0" />
             <CountrySelect
               dicts={dicts}
-              selectedCountries={[]}
-              handleCountryChange={(value) =>
-                setSelectedCountries(Array.from(value))
-              }
-              handleRemoveCountry={(country) =>
-                setSelectedCountries([].filter((c) => c !== country))
-              }
             />
             <Divider className="my-0" />
             <MarginSwitch dicts={dicts} />

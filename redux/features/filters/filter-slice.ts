@@ -5,7 +5,7 @@ export interface FilterState {
   selectedCategories: string[];
   selectedCurrencies: string[];
   selectedPayments: string[];
-  selectedCountries: string[];
+  selectedCountries: string;
   switchIsSelectedMarket: string;
   switchIsSelectedMargin: string;
 }
@@ -14,7 +14,7 @@ const initialState: FilterState = {
   selectedCategories: [],
   selectedCurrencies: [],
   selectedPayments: [],
-  selectedCountries: [],
+  selectedCountries: "",
   switchIsSelectedMarket: "",
   switchIsSelectedMargin: "",
 };
@@ -32,7 +32,7 @@ const filterSlice = createSlice({
     setSelectedPayments(state, action: PayloadAction<string[]>) {
       state.selectedPayments = action.payload;
     },
-    setSelectedCountries(state, action: PayloadAction<string[]>) {
+    setSelectedCountries(state, action: PayloadAction<string>) {
       state.selectedCountries = action.payload;
     },
     toggleSelectedMarket(state, action: PayloadAction<boolean>) {
@@ -45,7 +45,7 @@ const filterSlice = createSlice({
       state.selectedCategories = [];
       state.selectedCurrencies = [];
       state.selectedPayments = [];
-      state.selectedCountries = [];
+      state.selectedCountries = "";
       state.switchIsSelectedMarket = "";
       state.switchIsSelectedMargin = "";
     },

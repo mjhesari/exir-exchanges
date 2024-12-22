@@ -4,6 +4,7 @@ import Fancybox from "./fancy-box";
 import Link from "next/link";
 import { Business } from "@/types/dataTypes";
 import Image from "next/image";
+import { Card } from "@nextui-org/react";
 
 const CompanyGallery = ({ exchangeData }: { exchangeData: Business }) => {
   const images = [
@@ -12,9 +13,11 @@ const CompanyGallery = ({ exchangeData }: { exchangeData: Business }) => {
     "row-span-1 col-span-1",
     "row-span-1 col-span-1",
   ];
+if(!exchangeData.media) return null
+
 
   return (
-    <div className="rounded-lg items-center justify-center border h-[60vh] max-h-[600px] relative bg-white">
+    <Card className="items-center justify-center border h-[60vh] max-h-[600px] relative bg-white" shadow="none">
       <Fancybox
       delegate="[data-fancybox]"
         options={{
@@ -69,7 +72,7 @@ const CompanyGallery = ({ exchangeData }: { exchangeData: Business }) => {
           })}
         </div>
       </Fancybox>
-    </div>
+    </Card>
   );
 };
 

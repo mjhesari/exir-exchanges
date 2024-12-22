@@ -7,12 +7,7 @@ export const getExchangeData = async (
 ) => {
   try {
     const defaultSet = { industry: ["0615cf73-9438-4801-9b8d-cc5cdce2da6b"] };
-    const body = JSON.stringify(
-      filters
-        ? filterConvertor(filters)
-          ? { ...defaultSet, ...filterConvertor(filters) }
-          : defaultSet
-        : defaultSet
+    const body = JSON.stringify(filters? filterConvertor(filters) ? { ...defaultSet, ...filterConvertor(filters) }: defaultSet : defaultSet
     );
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}api/business/filter?pageIndex=${pageIndex}&pageSize=${pageSize}`,
@@ -34,7 +29,7 @@ export const getExchangeData = async (
   }
 };
 export const filterConvertor = (filters: FilterState) => {
-  const { selectedCategories, switchIsSelectedMargin, switchIsSelectedMarket } =
+  const { selectedCategories, switchIsSelectedMargin, switchIsSelectedMarket,selectedCountries } =
     filters;
 
   type BodyType = {
@@ -43,11 +38,9 @@ export const filterConvertor = (filters: FilterState) => {
 
   const body: BodyType = {};
   selectedCategories.length && (body.tags = selectedCategories);
-  switchIsSelectedMargin &&
-    (body.attributes = [{ key: switchIsSelectedMargin, value: true }]);
-  switchIsSelectedMarket &&
-    (body.attributes = [
-      ...((body?.attribute as { key: string; value: boolean }[]) ?? []),
+  selectedCountries.length && (body.country = selectedCountries);
+  switchIsSelectedMargin && (body.attributes = [{ key: switchIsSelectedMargin, value: true }]);
+  switchIsSelectedMarket && (body.attributes = [...((body?.attribute as { key: string; value: boolean }[]) ?? []),
       { key: switchIsSelectedMarket, value: true },
     ]);
 
