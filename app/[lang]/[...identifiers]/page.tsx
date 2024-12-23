@@ -22,7 +22,7 @@ const getdataExchange = async (id: string) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.TOKEN}`,
-      },
+      },cache:'no-store'
     });
     const res = await data.json();
     return res;
@@ -51,17 +51,17 @@ export default async function Home({
         <section className="space-y-4 mx-5 lg:mx-0">
           <CompanyOverview exchangeData={exchangeData} dicts={dicts} />
           <div className="lg:hidden block">
-            <CompanyContact dicts={dicts} exchangeData={exchangeData} />
+            <CompanyContact exchangeData={exchangeData}  dicts={dicts}/>
           </div>
           <CompanyDetails exchangeData={exchangeData} dicts={dicts} />
           <CompanyGallary exchangeData={exchangeData} />
-          <CompanySocialMedia dicts={dicts} exchangeData={exchangeData}/>
-          <CompanyLocCard dicts={dicts} exchangeData={exchangeData} />
+          <CompanySocialMedia  exchangeData={exchangeData} dicts={dicts}/>
+          <CompanyLocCard  exchangeData={exchangeData} dicts={dicts}/>
           <CompanyHoldApp dicts={dicts} />
         </section>
         {/* <MainBanner /> */}
         <section className="space-y-4 mx-5 lg:mx-0 lg:block hidden">
-          <CompanyContact dicts={dicts} exchangeData={exchangeData} />
+          <CompanyContact  exchangeData={exchangeData} dicts={dicts} />
           {/* <CompanyItemsCard exchangeData={exchangeData} dicts={dicts} /> */}
           {/* <CompanyProduct dicts={dicts} /> */}
           {/* <CompanyCuntributes dicts={dicts} /> */}
