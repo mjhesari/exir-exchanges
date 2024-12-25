@@ -4,12 +4,12 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 //* Import components
-import MainProviders from "./providers/main-provider";
+import MainProviders from "../providers/main-provider";
 import { langsType, getDictionary } from "./dictionaries/dictionaries";
 import MainFooter from "@/components/Footer/MainFooter";
 // import MobileNav from "@/components/Navbar/mobileNav";
 import NavTopLogo from "@/components/Navbar/navTopLogo";
-import { getExchangeData } from "@/utils/api";
+import { getAllLanguage, getExchangeData } from "@/utils/api";
 
 //* Local fonts
 const yekanBakh = localFont({
@@ -33,11 +33,12 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode; params: { lang: langsType } }>) {
   const dicts = await getDictionary(params?.lang);
   const {data}=await getExchangeData(0,24)
+  const lang=await getAllLanguage()
   const font = dicts.dir === "rtl" ? yekanBakh.className : roboto.className;
   return (
     <html lang={dicts.lang} dir={dicts.dir}>
       <body className={`${font}`}>
-        <MainProviders exchange={data}>
+        <MainProviders exchange={data} lang={lang}>
           <NavTopLogo dicts={dicts}/>
           <MainNavbar dicts={dicts} />
           {children}

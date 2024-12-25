@@ -1,4 +1,3 @@
-import "server-only";
 import dicts from "./en.json";
 
 const dictionaries = {

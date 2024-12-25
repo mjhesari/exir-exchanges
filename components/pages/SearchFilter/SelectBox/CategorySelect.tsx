@@ -10,8 +10,8 @@ const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
     );
   const dispatch = useAppDispatch();
   return (
-    <div className="flex flex-col gap-3 mt-4 ">
-      <h3 className="font-semibold">{dicts?.CardFilter.exchangeCategory}</h3>
+    <div className="flex flex-col gap-3">
+      <h3 className="font-semibold">{dicts?.CardFilter.exchangeCategory.exchangeCategory}</h3>
       <div className="flex flex-col gap-5">
         <CheckboxGroup
           value={selectedCategories}
@@ -20,7 +20,7 @@ const CategorySelect = ({dicts}:{dicts:DictsTypes}) => {
           color="secondary"
         >
           {category.map((cate) => (
-            <Checkbox value={cate.id} key={cate.id}>
+            <Checkbox value={cate.id} key={cate.id} className="font-light">
               {cate.value}
             </Checkbox>
           ))}

@@ -1,9 +1,8 @@
-import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { Business } from "./dataTypes";
+import { Business, CountryType, LanguagesTypes } from "./dataTypes";
 
 
 export type initialStateTypesLang = {
-  lang: DictsTypes | null;
+  lang: LanguagesTypes | null;
 };
 
 export interface DataState {

@@ -2,7 +2,7 @@
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 import { Icon } from "@iconify/react";
-// import StaticMap from "./static-map.jsx";
+import StaticMap from "./static-map.jsx";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Business } from "@/types/dataTypes";
 
@@ -18,7 +18,7 @@ export function CompanyLocCard({
       <CardBody>
         <div className="relative h-60 w-full bg-gray-100 overflow-hidden rounded-lg">
           {/* Replace with actual map implementation */}
-          {/* <StaticMap position={exchangeData?.geo} /> */}
+          <StaticMap position={exchangeData?.geo} />
         </div>
         <div className="flex justify-between items-start flex-col">
           <div className="flex items-center justify-center gap-x-2 mt-3">

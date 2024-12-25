@@ -21,7 +21,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
       <NavbarBrand className=" max-w-60">
         <Link href="/" className="flex items-center gap-3 text-black">
           <Logo />
-          <h1>Exchange Hub</h1>
+          <h1>{dicts.exchangeName}</h1>
         </Link>
       </NavbarBrand>
       <NavbarContent
@@ -40,7 +40,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
           </Dropdown>
         </NavbarItem> */}
         <NavbarItem>
-          <SearchInput dicts={dicts} />
+          <SearchInput dicts={dicts}/>
         </NavbarItem>
       </NavbarContent>
       {/* <NavbarContent className="flex-1 gap-6 " justify="center">

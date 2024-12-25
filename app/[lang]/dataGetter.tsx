@@ -3,20 +3,25 @@
 // Public imports
 import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/app/hooks";
-import { DataStructure } from "@/types/dataTypes";
-interface DataGetterProps {
-  exchangeData: DataStructure | null;
-}
+import {  DataGetterProps} from "@/types/dataTypes";
+
 //* Redux actions
 import { setExchangeData } from "@/redux/features/data/data-slice";
-const DataGetter = ({ exchangeData }: DataGetterProps) => {
+import { setLanguage } from "@/redux/features/languages/language-slice";
+
+const DataGetter = ({ exchangeData, lang }: DataGetterProps) => {
   // Hooks
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (exchangeData) {
-        dispatch(setExchangeData(exchangeData))
+      dispatch(setExchangeData(exchangeData));
     }
-  }, [exchangeData,dispatch]);
+  }, [exchangeData, dispatch]);
+  useEffect(() => {
+    if (lang) {
+      dispatch(setLanguage(lang));
+    }
+  }, [lang, dispatch]);
 
   // Conditional rendering
   if (!exchangeData) {

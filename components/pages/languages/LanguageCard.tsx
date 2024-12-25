@@ -1,45 +1,32 @@
-import { Icon } from "@iconify/react";
 import { Card } from "@nextui-org/react";
 // import Data
-import { regions } from "@/utils/data/data";
+import { LanguagesTypes } from "@/types/dataTypes";
+import Link from "next/link";
 
-
-
-const LanguageCard = () => {
-    return (
-    <Card className="w-full p-5 border" shadow="none" aria-label="Language Card">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-around">
-      {regions.map((region) => (
-        <div key={region.name} className="">
-          <div>
-            <h2 className="p-4 text-5xl font-semibold mb-4 w-30">{region.name}</h2>
-          </div>
-          <div>
-            <ul className="space-y-4 px-4">
-              {region.languages.map((language) => (
-                <li 
-                  key={language.code}
-                  className="flex items-center gap-3 hover:bg-default-100 p-2 rounded-lg cursor-pointer transition-colors"
-                >
-                  <Icon 
-                    icon={language.flag} 
-                    width='35'
-                    className="object-cover"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <div className="font-medium">{language.name}</div>
-                    <div className="text-sm text-default-500">{language.localName}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
-  </Card>
-    );
-}
+const LanguageCard = ({ language }: { language: LanguagesTypes }) => {
+  // const country=useAppSelector(state=>state.lang.lang)
+  return (
+    <Card
+      className="w-full p-3 border px-0"
+      shadow="none"
+      aria-label="Language Card"
+    >
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 py-1 px-3">
+        {language?.map((e) => (
+          <ul className="space-y-4 space-x-4 " key={e.id}>
+            <li
+              key={e.id}
+              className="h-10 flex  flex-col text-left min-w-max relative hover:bg-default-200 p-2 rounded-xl cursor-pointer transition-colors font-medium"
+            >
+            <Link href={`${e.code}`} className="absolute inset-0 place-items-center flex px-2">
+              {e.nativeName}
+            </Link>
+            </li>
+          </ul>
+        ))}
+      </div>
+    </Card>
+  );
+};
 
 export default LanguageCard;

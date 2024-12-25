@@ -3,26 +3,26 @@
   "lang": "en",
   "contryCode": "1",
   "iso": "us",
-  "exchangeName": "Exir Exchange",
+  "exchangeName": "Exchange Hub",
   "langName": "English",
   "menuSection": {
-    "mainNav":{
+    "mainNav": {
       "allExchanges": "All Exchanges",
       "suggestAnExchange": "Suggest An Exchange"
-    }
-    ,
-    "mobileMenu":{
-      "apps":"Apps",
-      "services":"Services",
-      "social":"Social",
-      "contact":"Contact"
+    },
+    "mobileMenu": {
+      "apps": "Apps",
+      "services": "Services",
+      "social": "Social",
+      "contact": "Contact"
     }
   },
   "placeholder": {
     "search": "Search...",
     "paymentChoose": "Choose Payment Methods",
     "currencyChoose": "Choose Currencies",
-    "countryChoose": "Choose Country"
+    "countryChoose": "Choose Country",
+    "categoryChoose":"Choose Categories"
   },
   "button": {
     "clearAll": "Clear all",
@@ -30,9 +30,9 @@
     "contribute": "Contribute",
     "tryItNow": "Try It Now",
     "seeallcontribute": "See All Contributors",
-    "search":"Search",
-    "manageProfile":"Manage Profile",
-    "countributeToEarn":"Contribute To Earn"
+    "search": "Search",
+    "manageProfile": "Manage Profile",
+    "countributeToEarn": "Contribute To Earn"
   },
   "cardDetails": {
     "exchangeType": "ExchangeType",
@@ -40,6 +40,7 @@
     "areaServed": "Area Served",
     "revenue": "Revenue",
     "NumberofEmployees": "Number Of Employees",
+    "marketWithFees": "Market With Fees",
     "Founding": "Year Established"
   },
   "infoContact": {
@@ -58,24 +59,30 @@
     "privacy": "Privacy",
     "docs": "Docs",
     "security": "Security",
-    "aboutExir":"About Exir"
+    "aboutExir": "About Exir"
   },
   "CardFilter": {
     "filter": "Filter",
-    "exchangeCategory": "Echanges Categories",
+    "exchangeCategory": {
+      "exchangeCategory": "Echanges Categories",
+      "crypto": "Crypto Exchanges",
+      "decentralized": "Decentralized Exchanges",
+      "Derivatives": "Derivatives Exchanges"
+    },
     "fiatDeposite": "Fiat Deposite",
     "country": "Country",
     "acceptedPaymentMethods": "Accepted Payment Methods",
     "marginTrading": "Margin Trading",
-    "marketWithFees": "Market With Fees"
+    "marketWithNoFees": "Market With No Fees"
   },
-  "CardResult":{
-    "selector":{
-      "relevant":"Relevant",
-      "newest":"Newest",
-      "oldest":"Oldest"
+  "CardResult": {
+    "selector": {
+      "relevant": "Relevant",
+      "newest": "Newest",
+      "oldest": "Oldest"
     },
-    "exchanges":"Exchanges",
-    "sortBy":"Sort By"
+    "exchanges": "Exchanges",
+    "sortBy": "Sort By",
+    "desc":"The complete list of Exchanges in Exchange Hub, including exchanges from around the world"
   }
 }

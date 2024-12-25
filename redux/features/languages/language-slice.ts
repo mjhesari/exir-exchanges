@@ -8,7 +8,13 @@ import { initialStateTypesLang } from "@/types/ReduxTypes";
 
 //* Initial state
 const initialState: initialStateTypesLang = {
-  lang: null,
+  lang: [{
+    id: 0,
+    name: "",
+    dir: "",
+    code: "",
+    nativeName: "",
+  }]
 };
 
 //* Slice
@@ -16,11 +22,11 @@ const langSlice = createSlice({
   name: "lang",
   initialState,
   reducers: {
-    setLaguage: (state, action) => {
+    setLanguage: (state, action) => {
       state.lang = action.payload;
-    }
+    },
   },
 });
 
 export default langSlice.reducer;
-export const {setLaguage} = langSlice.actions
+export const { setLanguage } = langSlice.actions;

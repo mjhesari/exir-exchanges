@@ -9,12 +9,13 @@ export function CompanyDetails({
   exchangeData: Business;
   dicts: DictsTypes;
 }) {
+  
   return (
     <Card className="p-5 justify-start border" shadow="none">
       <ul className="space-y-1">
         <li>
           <strong className="font-semibold">
-            {dicts.CardFilter.exchangeCategory}:
+            {dicts.cardDetails.exchangeType}:
           </strong>
           {exchangeData?.tags?.map((e, index) => (
             <span className="p-2 text-default-500" key={index}>
@@ -26,8 +27,13 @@ export function CompanyDetails({
           <strong className="font-semibold">
             {dicts.CardFilter.acceptedPaymentMethods}:
           </strong>
+
           <span className="p-2 text-default-500">
-            P2P, Bank deposit, Debit/Credit Card, Apple Pay, Google Pay{" "}
+            {
+              exchangeData?.attributes?.find(
+                (e) => e.key === "Accepted Payment Methods"
+              )?.value.toString().replace(/,/g, ' , ')
+            ??"No Data"}
           </span>
         </li>
         <li>
@@ -43,8 +49,10 @@ export function CompanyDetails({
             {dicts.CardFilter.fiatDeposite}:
           </strong>{" "}
           <span className="p-2 text-default-500">
-            GBP, TRY, EUR, KZT, AUD, BRL, RUB, UAH, VND, GHS, PHP, ZAR, NZD,
-            BHD, RON, HUF, CZK, PLN, KWD, SAR, QAR, OMR, PKR, UZS, NGN, AED, ARS{" "}
+            {
+              exchangeData?.attributes?.find((e) => e.key === "Fiat Deposit")
+                ?.value.toString().replace(/,/g, ' , ')
+            ??"No data"}
           </span>
         </li>
         <li>
@@ -67,17 +75,13 @@ export function CompanyDetails({
           <strong className="font-semibold">
             {dicts.CardFilter.marginTrading}:
           </strong>
-          <span className="p-2 text-default-500">
-            Yes
-          </span>
+          <span className="p-2 text-default-500">{exchangeData.attributes?.find((e)=>(e.key==="Margin Trading"))?.value.toString() ? "Yes": "No"}</span>
         </li>{" "}
         <li>
           <strong className="font-semibold">
-            {dicts.CardFilter.marketWithFees}:
+            {dicts.CardFilter.marketWithNoFees}:
           </strong>
-          <span className="p-2 text-default-500">
-            No
-          </span>
+          <span className="p-2 text-default-500">{exchangeData.attributes?.find((e)=>(e.key==="Market With Fees"))?.value.toString() ? "Yes": "No"}</span>
         </li>
       </ul>
     </Card>

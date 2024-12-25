@@ -8,7 +8,7 @@ const MarketSwitch = ({dicts}:{dicts:DictsTypes}) => {
   const {switchIsSelectedMarket}=useAppSelector((state) => state.filters)
     return (
         <div className="flex flex-row justify-between items-center place-items-center gap-3">
-              <h3 className="font-semibold">{dicts?.CardFilter?.marketWithFees}</h3>
+              <h3 className="font-semibold">{dicts?.CardFilter?.marketWithNoFees}</h3>
               <Switch
                 size="sm"
                 aria-label="market-switch"

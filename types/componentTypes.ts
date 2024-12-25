@@ -6,9 +6,6 @@ export interface PaymentsSelectProps {
   selectedPayments: string[];  }
 
 
-export interface CurrenciesSelectProps {
-  dicts:DictsTypes
-  selectedCurrencies: string[];}
 
 export interface Country {
   id: number;

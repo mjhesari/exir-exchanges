@@ -3,7 +3,7 @@
   "lang": "fa",
   "contryCode": "98",
   "iso": "ir",
-  "exchangeName": "صرافی اکسیر",
+  "exchangeName": "صرافی هاب",
   "langName": "فارسی",
   "menuSection": {
     "mainNav": {
@@ -21,7 +21,8 @@
     "search": "جستجو...",
     "paymentChoose": "روش پرداخت انتخاب کن",
     "currencyChoose": "پول ارزی انتخاب کن",
-    "countryChoose": "کشور انتخاب کن"
+    "countryChoose": "کشور انتخاب کن",
+    "categoryChoose":"دسته بندی انتخاب کن"
   },
 
   "button": {
@@ -40,7 +41,9 @@
     "areaServed": "منطقه خدمات دهی",
     "revenue": "درآمد",
     "NumberofEmployees": "تعداد  کارمندان",
+    "marketWithFees": "بازار همراه با کارمزد",
     "Founding": "سال تاسیس"
+
   },
   "infoContact": {
     "contact": "اطلاعات تماس و ارتباط"
@@ -62,12 +65,17 @@
   },
   "CardFilter": {
     "filter": "مرتب سازی",
-    "exchangeCategory": "دسته بندی صرافی ها",
+    "exchangeCategory": {
+      "exchangeCategory": "دسته بندی صرافی ها",
+      "crypto": "صرافی‌های ارز دیجیتال",
+      "decentralized": "صرافی‌های غیرمتمرکز",
+      "Derivatives": "صرافی‌های مشتقات"
+    },
     "fiatDeposite": "واریز پول ارزی",
     "country": "کشور",
     "acceptedPaymentMethods": "روش های پرداخت تایید شده",
     "marginTrading": "معامله اهرمی",
-    "marketWithFees": "بازار با کارمزد"
+    "marketWithNoFees": "بازار بدون کارمزد"
   },
   "CardResult": {
     "selector": {
@@ -76,6 +84,7 @@
       "oldest": "قدیمی ترین"
     },
     "exchanges": "صرافی ها",
-    "sortBy": "بر اساس"
+    "sortBy": "بر اساس",
+    "desc":"لیست کامل صرافی های دنیا در صرافی هاب"
   }
 }

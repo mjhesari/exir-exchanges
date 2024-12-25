@@ -24,7 +24,7 @@ export function ExchangeCard({
         />
       </CardHeader>
       <CardBody className="flex flex-col items-start justify-center pt-2">
-          <h4 className="font-semibold">
+          <h4 className="font-light p-2">
             {title?.[dicts?.lang ?? "fa"] ?? ""}
           </h4>
       </CardBody>

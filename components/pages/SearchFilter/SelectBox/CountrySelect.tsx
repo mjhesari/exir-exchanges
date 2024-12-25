@@ -10,7 +10,6 @@ const CountrySelect = ({ dicts }: { dicts: DictsTypes }) => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(true);
   const { selectedCountries } = useAppSelector((state) => state.filters);
-  console.log('selectedCountries: ', selectedCountries);
   const [country, setCountry] = useState<CountryType[]>([]);
   //* Fetch Data Countries
   useEffect(() => {
@@ -33,7 +32,7 @@ const CountrySelect = ({ dicts }: { dicts: DictsTypes }) => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 mb-2">
       <h3 className="font-semibold">{dicts?.CardFilter?.country}</h3>
       <div>
         <Autocomplete
@@ -53,6 +52,7 @@ const CountrySelect = ({ dicts }: { dicts: DictsTypes }) => {
         >
           {(countryName) => (
             <AutocompleteItem
+            className="font-light"
               key={countryName?.tr?.en}
               value={countryName?.tr?.en}
               textValue={countryName?.tr?.[dicts.lang]}
