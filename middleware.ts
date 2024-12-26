@@ -23,8 +23,21 @@ function getLocale(request: NextRequest): string {
 }
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;  
+  const { pathname,searchParams } = request.nextUrl;  
 
+   // Handle the /languages route
+   if (pathname === "/languages") {
+    const selectedLanguage = searchParams.get("lang");
+
+    if (selectedLanguage && locales.includes(selectedLanguage)) {
+      // Redirect to the selected language
+      const redirectUrl = new URL(`/${selectedLanguage}`, request.url);
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    // If no valid language is selected, show the /languages page
+    return NextResponse.next();
+  }
   // Check if the pathname already includes a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -45,21 +58,14 @@ export function middleware(request: NextRequest) {
 
   // Skip locale check for these static paths
   if (staticPaths.some(path => pathname.startsWith(path))) {
-    const response = NextResponse.next()
-    response.headers.set("accept-language" , "fa")
-    return response
+    return NextResponse.next();
   }
-
   // Determine the preferred locale
   const locale = getLocale(request);
-
   // Redirect to the pathname with the preferred locale
   const redirectUrl = new URL(`/${locale}${pathname}`, request.url);
-
-
   return NextResponse.redirect(redirectUrl);
 }
-
 export const config = {
   matcher: [
     // Match all paths except internal ones like _next, assets, etc.

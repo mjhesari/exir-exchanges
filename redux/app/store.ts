@@ -2,11 +2,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 //* Reducers
-import lang from "../features/language/lang-slice"
-
+import filterReducer from "@/redux/features/filters/filter-slice";
+import dataReducer from "@/redux/features/data/data-slice";
+import langReducer from '@/redux/features/languages/language-slice'
 export const store = configureStore({
   reducer: {
-    lang
+    filters: filterReducer,
+    data: dataReducer,
+    lang:langReducer
   },
 });
 

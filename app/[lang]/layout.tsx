@@ -1,47 +1,49 @@
-// Public imports
-import '@/styles/globals.css';
-import '@/styles/app.css';
-import { Metadata } from 'next';
-
+import MainNavbar from "@/components/Navbar/MainNavbar";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
+import { Roboto } from "next/font/google";
 //* Import components
-import { MainProviders } from './providers/main-provider';
+import MainProviders from "../providers/main-provider";
+import { langsType, getDictionary } from "./dictionaries/dictionaries";
+import MainFooter from "@/components/Footer/MainFooter";
+// import MobileNav from "@/components/Navbar/mobileNav";
+import NavTopLogo from "@/components/Navbar/navTopLogo";
+import { getAllLanguage, getExchangeData } from "@/utils/api";
 
-//* Multi lang config
-import { getDictionary } from './dictionaries/dictionaries';
-import { LocaleTypes } from './dictionaries/dictionaries';
-
-//* Font config
-import localFont from 'next/font/local';
+//* Local fonts
 const yekanBakh = localFont({
-  src: './fonts/YekanBakh-VF.woff2',
-  display: 'swap',
+  src: "./fonts/YekanBakh-VF.woff2",
+  display: "swap",
+});
+const roboto = Roboto({
+  weight: ["100", "300", "400", "500", "700", "900"],
+  subsets: ["latin"],
 });
 
-//* Metadata
+//* Set meta tags
 export const metadata: Metadata = {
-  title: 'P-ID',
-  description: 'Integrated authentication system',
+  title: "Exchange Hub",
+  description: "Exchange Hub",
 };
 
 export default async function RootLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: { lang: LocaleTypes };
-}) {
-  const dicts = await getDictionary(params.lang);
-
+}: Readonly<{ children: React.ReactNode; params: { lang: langsType } }>) {
+  const dicts = await getDictionary(params?.lang);
+  const {data}=await getExchangeData(0,24)
+  const lang=await getAllLanguage()
+  const font = dicts.dir === "rtl" ? yekanBakh.className : roboto.className;
   return (
-    <html
-      lang={dicts.lang}
-      dir={dicts.dir}
-      className={`${yekanBakh.className} tracking-tighter light`}
-    >
-      <body>
-        <MainProviders dicts={dicts}>
-          {/* Main content */}
-          <main>{children}</main>
+    <html lang={dicts.lang} dir={dicts.dir}>
+      <body className={`${font}`}>
+        <MainProviders exchange={data} lang={lang}>
+          <NavTopLogo dicts={dicts}/>
+          <MainNavbar dicts={dicts} />
+          {children}
+          {/* <MobileNav dicts={dicts}/> */}
+          <MainFooter dicts={dicts} />
         </MainProviders>
       </body>
     </html>

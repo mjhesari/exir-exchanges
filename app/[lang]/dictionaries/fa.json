@@ -1,4 +1,90 @@
 {
+  "dir": "rtl",
   "lang": "fa",
-  "dir": "rtl"
+  "contryCode": "98",
+  "iso": "ir",
+  "exchangeName": "صرافی هاب",
+  "langName": "فارسی",
+  "menuSection": {
+    "mainNav": {
+      "allExchanges": "همه صرافی ها",
+      "suggestAnExchange": "صرافی پیشنهادی"
+    },
+    "mobileMenu": {
+      "apps": "برنامه ها",
+      "services": "سرویس ها",
+      "social": "شبکه های اجتماعی",
+      "contact": "تماس"
+    }
+  },
+  "placeholder": {
+    "search": "جستجو...",
+    "paymentChoose": "روش پرداخت انتخاب کن",
+    "currencyChoose": "پول ارزی انتخاب کن",
+    "countryChoose": "کشور انتخاب کن",
+    "categoryChoose":"دسته بندی انتخاب کن"
+  },
+
+  "button": {
+    "clearAll": "پاک کردن همه",
+    "navigate": "مسیریابی ",
+    "contribute": "مشارکت کردن",
+    "tryItNow": "همین حالا امتحان کنید",
+    "seeallcontribute": "مشاهده همه مشارکت‌کنندگان",
+    "search": "جستجو",
+    "manageProfile": "مدیریت پروفایل",
+    "countributeToEarn": "مشارکت برای کسب درآمد"
+  },
+  "cardDetails": {
+    "exchangeType": "نوع صرافی",
+    "IncorporationCountry": "کشور صرافی ",
+    "areaServed": "منطقه خدمات دهی",
+    "revenue": "درآمد",
+    "NumberofEmployees": "تعداد  کارمندان",
+    "marketWithFees": "بازار همراه با کارمزد",
+    "Founding": "سال تاسیس"
+
+  },
+  "infoContact": {
+    "contact": "اطلاعات تماس و ارتباط"
+  },
+  "productandService": "محصولات و سرویس دهی",
+  "socialNetwork": "شبکه های اجتماعی",
+  "holdingApp": "اپلیکیشن هلدینگ صرافی پارسین",
+  "contributors": {
+    "contributors": "مشارکت‌کنندگان",
+    "avardingToken": "توکن‌های اهدا شده"
+  },
+  "businessPartners": "شرکای تجاری",
+  "footerLink": {
+    "terms": "شرایط",
+    "privacy": "حریم خصوصی",
+    "docs": "مستندات",
+    "security": "امنیت",
+    "aboutExir": "درباره اکسیر"
+  },
+  "CardFilter": {
+    "filter": "مرتب سازی",
+    "exchangeCategory": {
+      "exchangeCategory": "دسته بندی صرافی ها",
+      "crypto": "صرافی‌های ارز دیجیتال",
+      "decentralized": "صرافی‌های غیرمتمرکز",
+      "Derivatives": "صرافی‌های مشتقات"
+    },
+    "fiatDeposite": "واریز پول ارزی",
+    "country": "کشور",
+    "acceptedPaymentMethods": "روش های پرداخت تایید شده",
+    "marginTrading": "معامله اهرمی",
+    "marketWithNoFees": "بازار بدون کارمزد"
+  },
+  "CardResult": {
+    "selector": {
+      "relevant": "مرتبط",
+      "newest": "جدیدترین",
+      "oldest": "قدیمی ترین"
+    },
+    "exchanges": "صرافی ها",
+    "sortBy": "بر اساس",
+    "desc":"لیست کامل صرافی های دنیا در صرافی هاب"
+  }
 }
