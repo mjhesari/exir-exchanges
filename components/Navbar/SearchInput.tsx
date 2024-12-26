@@ -16,7 +16,6 @@ const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
       const trimmedValue = inputValue.trim();
       if (trimmedValue) {
         dispatch(setExchangeName({ en: trimmedValue }));
-        console.log("Search triggered with:", trimmedValue);
       }
     }
   };
@@ -27,7 +26,6 @@ const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
 
     if (value.trim() === "") {
       dispatch(setExchangeName({ [dicts?.lang??'en']: "" }));
-      console.log("Input cleared, showing all data");
     }
   };
 
