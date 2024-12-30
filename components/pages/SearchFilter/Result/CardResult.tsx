@@ -1,5 +1,5 @@
 "use client";
-import { Button, Card, Spinner } from "@nextui-org/react";
+import { Button, Card, Skeleton, Spinner } from "@nextui-org/react";
 import { ExchangeCard } from "./ExchangeCard";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
@@ -13,7 +13,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const filters = useAppSelector((state) => state.filters);
-  
+
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -41,9 +41,15 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
       <div className="flex flex-col">
         <div className="flex flex-col justify-between items-start pt-4">
           <h2 className="text-2xl font-bold p-2 pb-1">
-            {dicts?.CardResult?.exchanges}
+            {process?.env?.NEXT_PUBLIC_DIRECTORY === "drziba"
+              ? dicts.CardResult.titleResult.drziba
+              : dicts?.CardResult?.titleResult.exchanges}
           </h2>
-          <h5 className="px-2 p-1 font-normal">{dicts?.CardResult?.desc}</h5>
+          <h5 className="px-2 p-1 font-normal">
+            {process?.env?.NEXT_PUBLIC_DIRECTORY === "drziba"
+              ? dicts.CardResult.desc.drziba
+              : dicts?.CardResult?.desc.exchanges}
+          </h5>
           {/* <div className="flex flex-row justify-center items-center">
             <span className="text-xs">{dicts?.CardResult?.sortBy}</span>
             <Select
@@ -70,7 +76,7 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
         <div>
           <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 py-3 md:gap-3 gap-y-4 lg:gap-3 sm:gap-x-3 px-0">
             {exchangeData?.length > 0 ? (
-              exchangeData.map((exchange, index) => (
+              exchangeData?.map((exchange, index) => (
                 <Card
                   as={"a"}
                   href={`/${exchange?.slug}/${exchange?.publicId}`}
@@ -85,18 +91,25 @@ const CardResult = ({ dicts }: { dicts: DictsTypes }) => {
                 </Card>
               ))
             ) : (
-              <p>Loading Data</p>
+              <Card className="w-[285px] space-y-5" radius="lg">
+                <Skeleton className="rounded-lg flex-col items-start p-0 rounded-b-none object-cover w-full">
+                  <div className="h-40 rounded-lg bg-default-300" />
+                </Skeleton>
+                <div className="pt-2 pb-5">
+                  <Skeleton className="w-3/5 rounded-lg mx-3">
+                    <div className="h-5 w-3/5 rounded-lg bg-default-200 " />
+                  </Skeleton>
+                </div>
+              </Card>
             )}
           </div>
         </div>
-        {exchangeData.length>=24 && (
+        {exchangeData?.length >= 24 && (
           <Button
             className="w-max mx-auto my-4 font-normal"
             radius="lg"
             variant="bordered"
-            startContent={
-              loading ? <Spinner size="sm" color="default" /> : ""
-            }
+            startContent={loading ? <Spinner size="sm" color="default" /> : ""}
             onClick={() => setPageIndex(pageIndex + 1)}
             disabled={loading}
             aria-label="load-more"

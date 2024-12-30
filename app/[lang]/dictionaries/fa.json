@@ -3,7 +3,7 @@
   "lang": "fa",
   "contryCode": "98",
   "iso": "ir",
-  "exchangeName": "صرافی هاب",
+  "DirectoryName": { "exchange": "صرافی هاب", "drziba": "دکتر زیبا" },
   "langName": "فارسی",
   "menuSection": {
     "mainNav": {
@@ -22,9 +22,10 @@
     "paymentChoose": "روش پرداخت انتخاب کن",
     "currencyChoose": "پول ارزی انتخاب کن",
     "countryChoose": "کشور انتخاب کن",
-    "categoryChoose":"دسته بندی انتخاب کن"
+    "categoryChoose": "دسته بندی انتخاب کن",
+    "provinceChoose":"استان انتخاب کن",
+    "cityChoose":"شهر انتخاب کن"
   },
-
   "button": {
     "clearAll": "پاک کردن همه",
     "navigate": "مسیریابی ",
@@ -39,11 +40,9 @@
     "exchangeType": "نوع صرافی",
     "IncorporationCountry": "کشور صرافی ",
     "areaServed": "منطقه خدمات دهی",
-    "revenue": "درآمد",
     "NumberofEmployees": "تعداد  کارمندان",
     "marketWithFees": "بازار همراه با کارمزد",
     "Founding": "سال تاسیس"
-
   },
   "infoContact": {
     "contact": "اطلاعات تماس و ارتباط"
@@ -65,17 +64,30 @@
   },
   "CardFilter": {
     "filter": "مرتب سازی",
-    "exchangeCategory": {
-      "exchangeCategory": "دسته بندی صرافی ها",
-      "crypto": "صرافی‌های ارز دیجیتال",
-      "decentralized": "صرافی‌های غیرمتمرکز",
-      "Derivatives": "صرافی‌های مشتقات"
+    "category": {
+      "exchangeCategory": {
+        "category": "دسته بندی صرافی ها",
+        "crypto": "صرافی‌های ارز دیجیتال",
+        "decentralized": "صرافی‌های غیرمتمرکز",
+        "derivatives": "صرافی‌های مشتقات"
+      },
+      "drzibaCategory":{
+        "category":"دسته بندی ها",
+        "beautySalon":"سالن های زیبایی",
+        "beautyClinic":"کلینیک های زیبایی",
+        "beautyTrapy":"بیوتی تراپی",
+        "beautyWomen":"آرایشگاه زنانه",
+        "beautyMen":"آرایشگاه مردانه",
+        "dr":"پزشک"
+      }
     },
     "fiatDeposite": "واریز پول ارزی",
     "country": "کشور",
     "acceptedPaymentMethods": "روش های پرداخت تایید شده",
     "marginTrading": "معامله اهرمی",
-    "marketWithNoFees": "بازار بدون کارمزد"
+    "marketWithNoFees": "بازار بدون کارمزد",
+    "province":"استان",
+    "city":"شهر"
   },
   "CardResult": {
     "selector": {
@@ -83,8 +95,14 @@
       "newest": "جدیدترین",
       "oldest": "قدیمی ترین"
     },
-    "exchanges": "صرافی ها",
+    "titleResult": {
+      "exchanges": "صرافی ها",
+      "drziba": "دکتر زیبا"
+    },
     "sortBy": "بر اساس",
-    "desc":"لیست کامل صرافی های دنیا در صرافی هاب"
+    "desc": {
+      "exchanges": "لیست کامل صرافی های دنیا در صرافی هاب",
+      "drziba": "دکتر زیبا"
+    }
   }
 }

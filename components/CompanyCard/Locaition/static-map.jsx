@@ -33,11 +33,12 @@ const StaticMap = ( {position }) => {
   if (!position) return null;
 
   const location = convertToObjectLocation(position) || { lat: 32, lng: 54 }
-
+  const isValidLocation = location && !isNaN(location.lat) && !isNaN(location.lng);
+  const safeLocation = isValidLocation ? location : { lat: 32, lng: 54 };
   const LocationMarker = () => {
     return position === null ? null : (
       <MarkerDynamic
-        position={location}
+        position={safeLocation}
         icon={createMarkerIcon()}
       />
     );
@@ -45,7 +46,7 @@ const StaticMap = ( {position }) => {
 
   return (
     <Map
-    center={location}
+    center={safeLocation}
     scrollWheelZoom={false}
     touchZoom={false}
     zoom={14}

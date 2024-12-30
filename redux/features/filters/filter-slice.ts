@@ -8,9 +8,11 @@ export interface FilterState {
   selectedCurrencies: string[];
   selectedPayments: string[];
   selectedCountries: string;
+  selectedProvinces: string;
+  selectedCities:string;
   switchIsSelectedMarket: string;
   switchIsSelectedMargin: string;
-  exchangeName: { [key: string]: string };
+  searchName: { [key: string]: string };
 }
 
 const initialState: FilterState = {
@@ -18,9 +20,11 @@ const initialState: FilterState = {
   selectedCurrencies: [],
   selectedPayments: [],
   selectedCountries: "",
+  selectedProvinces: "",
+  selectedCities:"",
   switchIsSelectedMarket: "",
   switchIsSelectedMargin: "",
-  exchangeName: {},
+  searchName: {},
 };
 
 const filterSlice = createSlice({
@@ -39,14 +43,20 @@ const filterSlice = createSlice({
     setSelectedCountries(state, action: PayloadAction<string>) {
       state.selectedCountries = action.payload;
     },
+    setSelectedProvinces(state, action: PayloadAction<string>) {
+      state.selectedProvinces = action.payload;
+    },
+    setSelectedCities(state, action: PayloadAction<string>) {
+      state.selectedCities = action.payload;
+    },
     toggleSelectedMarket(state, action: PayloadAction<boolean>) {
       state.switchIsSelectedMarket = action.payload ? marketAttributeKey : "";
     },
     toggleSelectedMargin(state, action: PayloadAction<boolean>) {
       state.switchIsSelectedMargin = action.payload ? marginAttributeKey : "";
     },
-    setExchangeName(state, action: PayloadAction<{ [key: string]: string }>) {
-      state.exchangeName = action.payload;
+    setSearchName(state, action: PayloadAction<{ [key: string]: string }>) {
+      state.searchName = action.payload;
     },
     resetFilters(state) {
       state.selectedCategories = [];
@@ -55,7 +65,9 @@ const filterSlice = createSlice({
       state.selectedCountries = "";
       state.switchIsSelectedMarket = "";
       state.switchIsSelectedMargin = "";
-      state.exchangeName = {};
+      state.searchName = {};
+      state.selectedProvinces="";
+      state.selectedCities="";
     },
   },
 });
@@ -67,8 +79,10 @@ export const {
   setSelectedCountries,
   toggleSelectedMarket,
   toggleSelectedMargin,
+  setSelectedProvinces,
+  setSelectedCities,
   resetFilters,
-  setExchangeName,
+  setSearchName,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;
