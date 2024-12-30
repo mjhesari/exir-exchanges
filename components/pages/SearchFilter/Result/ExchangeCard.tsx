@@ -12,8 +12,8 @@ export function ExchangeCard({
   title: { [key: string]: string };
 }) {
   return (
-    <Card className="cursor-pointer h-full">
-      <CardHeader className="flex-col items-start p-0 rounded-b-none">
+    <div className="cursor-pointer h-full">
+      <div className="flex-col items-start p-0 rounded-b-none">
         <div className="object-cover rounded-lg h-40 w-full bg-default-300 flex justify-center items-center flex-col rounded-b-none">
         <Icon icon="carbon:no-image" className="text-white" width="32" height="32" />
         </div>
@@ -22,12 +22,12 @@ export function ExchangeCard({
           className="object-cover rounded-lg h-40 w-full bg-zinc-500 hidden"
           src={image??""}
         />
-      </CardHeader>
-      <CardBody className="flex flex-col items-start justify-center pt-2">
+      </div>
+      <div className="flex flex-col items-start justify-center p-1">
           <h4 className="font-light p-2">
             {title?.[dicts?.lang ?? "fa"] ?? ""}
           </h4>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }

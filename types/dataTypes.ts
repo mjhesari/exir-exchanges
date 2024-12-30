@@ -10,7 +10,7 @@ export interface SiteData {
     [key: string]: string;
   };
   businessModel: string;
-  defaultLanguage: string;
+  DEFAULT_LANGuage: string;
   description: {
     [key: string]: string;
   };
@@ -160,7 +160,7 @@ export interface Business {
     en?: string;
     fa?: string;
   };
-  defaultLanguage?: string;
+  DEFAULT_LANGuage?: string;
   description?: {
     en?: string;
     fa: string;
@@ -255,6 +255,17 @@ export interface CountryType {
   code: string;
   iso: string;
   lang: { [key: string]: string }[] | null;
+}
+export interface ProvinceType {
+  id: number;
+  contryId:number
+  tr: { [key: string]: string };
+}
+export interface CityType {
+  id: number;
+  contryId:number;
+  provinceId:number
+  tr: { [key: string]: string };
 }
 export type LanguagesTypes = {
   id: number;

@@ -42,7 +42,7 @@ export const paymentMethods = [
   { key: "ApplePay", label: "ApplePay" },
   { key: "GooglePay", label: "GooglePay" },
 ];
-export const category = [
+export const categoryExchange = [
   {id:"88317030-715b-4483-9663-591960a7009a", value:"Crypto Exchanges"},
   {id:"5c44d450-3805-4098-9f67-e9cd7fdb472a",value:"Decentralized Exchanges"},
   {id: "47754e79-f71d-47e2-8eeb-0f7445bce298",value:"Derivatives Exchanges"},
@@ -58,3 +58,11 @@ export const category = [
   {id: "9b43bfda-b614-4311-9782-89c3a1026c77",value:"Domestic Exchanges"}
 ];
 
+export const categoryZiba=[
+  {id:"9b1c5f1d-1686-49ed-8bb4-3b1e935aa8a3",value:"پزشک"},
+  {id:"1a705b19-8fdb-4361-a958-29e03f88750f",value:"سالن های زیبایی"},
+  {id:"7d6d7b83-ea18-4063-983a-fe052681d3ab",value:"کلینیک های زیبایی"},
+  {id:"ca107dc3-b734-4f82-84b0-310652925767",value:"آرایشگاه مردانه"},
+  {id:"2de9f69c-a16c-4807-860d-4f72b962489e",value:"آرایشگاه زنانه"},
+  {id:"f5d65bfc-1a5c-4658-a8e5-1495c194e8d7",value:"بیوتی تراپیست"},
+]

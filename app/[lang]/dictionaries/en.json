@@ -3,7 +3,7 @@
   "lang": "en",
   "contryCode": "1",
   "iso": "us",
-  "exchangeName": "Exchange Hub",
+  "DirectoryName": { "exchange": "Exchange Hub", "drziba": "دکترزیبا" },
   "langName": "English",
   "menuSection": {
     "mainNav": {
@@ -22,7 +22,9 @@
     "paymentChoose": "Choose Payment Methods",
     "currencyChoose": "Choose Currencies",
     "countryChoose": "Choose Country",
-    "categoryChoose":"Choose Categories"
+    "categoryChoose": "Choose Categories",
+    "provinceChoose":"",
+    "cityChoose":""
   },
   "button": {
     "clearAll": "Clear all",
@@ -38,7 +40,6 @@
     "exchangeType": "ExchangeType",
     "IncorporationCountry": "Incorporation Country",
     "areaServed": "Area Served",
-    "revenue": "Revenue",
     "NumberofEmployees": "Number Of Employees",
     "marketWithFees": "Market With Fees",
     "Founding": "Year Established"
@@ -63,17 +64,30 @@
   },
   "CardFilter": {
     "filter": "Filter",
-    "exchangeCategory": {
-      "exchangeCategory": "Echanges Categories",
-      "crypto": "Crypto Exchanges",
-      "decentralized": "Decentralized Exchanges",
-      "Derivatives": "Derivatives Exchanges"
+    "category": {
+      "exchangeCategory": {
+        "category": "Echanges Categories",
+        "crypto": "Crypto Exchanges",
+        "decentralized": "Decentralized Exchanges",
+        "derivatives": "Derivatives Exchanges"
+      },
+      "drzibaCategory": {
+        "category":"",
+        "beautySalon": "",
+        "beautyClinic": "",
+        "beautyTrapy": "",
+        "beautyWomen": "",
+        "beautyMen": "",
+        "dr": ""
+      }
     },
     "fiatDeposite": "Fiat Deposite",
     "country": "Country",
     "acceptedPaymentMethods": "Accepted Payment Methods",
     "marginTrading": "Margin Trading",
-    "marketWithNoFees": "Market With No Fees"
+    "marketWithNoFees": "Market With No Fees",
+    "province": "",
+    "city": ""
   },
   "CardResult": {
     "selector": {
@@ -81,8 +95,14 @@
       "newest": "Newest",
       "oldest": "Oldest"
     },
-    "exchanges": "Exchanges",
+    "titleResult": {
+      "exchanges": "Exchanges",
+      "drziba": "Dr.Ziba"
+    },
     "sortBy": "Sort By",
-    "desc":"The complete list of Exchanges in Exchange Hub, including exchanges from around the world"
+    "desc": {
+      "exchanges": "The complete list of Exchanges in Exchange Hub, including exchanges from around the world",
+      "drziba": ""
+    }
   }
 }

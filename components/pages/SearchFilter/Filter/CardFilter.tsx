@@ -2,17 +2,19 @@
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { Icon } from "@iconify-icon/react";
 import { Button, Card, Divider } from "@nextui-org/react";
-import CountrySelect from "../SelectBox/CountrySelect";
-import FiatSelect from "../SelectBox/FiatSelect";
-import PaymentSelect from "../SelectBox/PaymentSelect";
+import CountrySelect from "../SelectBox/ExchangeSelect/CountrySelect";
+import FiatSelect from "../SelectBox/ExchangeSelect/FiatSelect";
+import PaymentSelect from "../SelectBox/ExchangeSelect/PaymentSelect";
 import CategorySelect from "../SelectBox/CategorySelect";
-import MarketSwitch from "../SelectBox/MarketSwitch";
-import MarginSwitch from "../SelectBox/MarginSwitch";
+import MarketSwitch from "../SelectBox/ExchangeSelect/MarketSwitch";
+import MarginSwitch from "../SelectBox/ExchangeSelect/MarginSwitch";
 import { resetFilters } from "@/redux/features/filters/filter-slice";
 import { useCallback, useEffect, useTransition } from "react";
 import { getExchangeData } from "@/utils/api";
 import { setExchangeData } from "@/redux/features/data/data-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
+import ProvinceSelect from "../SelectBox/DrZibaSelect/ProvinceSelect";
+import CitySelect from "../SelectBox/DrZibaSelect/CitySelect";
 
 const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
   const dispatch = useAppDispatch();
@@ -46,11 +48,13 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
     filters.selectedPayments,
     filters.switchIsSelectedMargin,
     filters.switchIsSelectedMarket,
+    filters.selectedCities,
+    filters.selectedProvinces,
   ]);
   useEffect(() => {
     applyFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters.exchangeName]);
+  }, [filters.searchName]);
   return (
     <Card
       shadow="none"
@@ -60,7 +64,12 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
         <div className="w-max">
           <h2 className="text-lg font-semibold flex items-center px-3">
             {" "}
-            <Icon icon="mage:filter" width="24" height="24" className="mr-1"/>{" "}
+            <Icon
+              icon="mage:filter"
+              width="24"
+              height="24"
+              className="mr-1"
+            />{" "}
             {dicts?.CardFilter.filter}
           </h2>
         </div>
@@ -84,15 +93,25 @@ const CardFilter = ({ dicts }: { dicts: DictsTypes }) => {
         <Divider className="my-0" />
         <CategorySelect dicts={dicts} />
         <Divider className="my-0" />
-        <PaymentSelect dicts={dicts} />
-        <Divider className="my-0" />
-        <FiatSelect dicts={dicts} />
-        <Divider className="my-0" />
-        <CountrySelect dicts={dicts} />
-        <Divider className="my-0" />
-        <MarginSwitch dicts={dicts} />
-        <Divider className="my-0" />
-        <MarketSwitch dicts={dicts} />
+        {process?.env?.NEXT_PUBLIC_DIRECTORY === "drziba" ? (
+          <div className="flex flex-col gap-3">
+            <ProvinceSelect dicts={dicts} />
+            <Divider className="my-0" />
+            <CitySelect dicts={dicts}/>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+            <PaymentSelect dicts={dicts} />
+            <Divider className="my-0" />
+            <FiatSelect dicts={dicts} />
+            <Divider className="my-0" />
+            <CountrySelect dicts={dicts} />
+            <Divider className="my-0" />
+            <MarginSwitch dicts={dicts} />
+            <Divider className="my-0" />
+            <MarketSwitch dicts={dicts} />
+          </div>
+        )}
       </div>
 
       <Button

@@ -6,7 +6,7 @@ const MainFooter = ({ dicts }: { dicts: DictsTypes }) => {
     <div className="bg-white border-t hidden lg:block mt-4 h-10">
       <footer className="flex justify-between container mx-auto p-2 items-center">
         <div className="flex flex-row justify-center items-center">
-          <h3 className="mx-2 text-default-500">© 2024 {dicts?.exchangeName}</h3>
+          <h3 className="mx-2 text-default-500">© 2024 {dicts?.DirectoryName.exchange}</h3>
         </div>
         <div className="">
           <ul className="flex flex-row gap-8 justify-around items-center place-content-center ">

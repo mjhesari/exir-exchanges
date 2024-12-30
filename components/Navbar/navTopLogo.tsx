@@ -12,7 +12,7 @@ const NavTopLogo = ({dicts}:{dicts:DictsTypes}) => {
           className="lg:hidden flex flex-row p-1 justify-start w-44 gap-x-2 items-center rounded-full border"
           shadow="none"
         >
-          <Logo /> <h1>{dicts?.exchangeName}</h1>
+          <Logo /> <h1>{dicts?.DirectoryName.exchange}</h1>
         </Card>
         </Link>
 

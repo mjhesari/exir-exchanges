@@ -79,7 +79,7 @@ export function CompanyDetails({
         </li>{" "}
         <li>
           <strong className="font-semibold">
-            {dicts.CardFilter.marketWithNoFees}:
+            {dicts.cardDetails.marketWithFees}:
           </strong>
           <span className="p-2 text-default-500">{exchangeData.attributes?.find((e)=>(e.key==="Market With Fees"))?.value.toString() ? "Yes": "No"}</span>
         </li>

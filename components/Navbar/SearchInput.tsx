@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { Input } from "@nextui-org/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
-import { setExchangeName } from "@/redux/features/filters/filter-slice";
+import { setSearchName } from "@/redux/features/filters/filter-slice";
 import { useEffect, useState } from "react";
 
 
@@ -15,7 +15,7 @@ const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
     if (event.key === "Enter") {
       const trimmedValue = inputValue.trim();
       if (trimmedValue) {
-        dispatch(setExchangeName({ en: trimmedValue }));
+        dispatch(setSearchName({ [dicts?.lang??'en']: trimmedValue }));
       }
     }
   };
@@ -25,14 +25,14 @@ const SearchInput = ({ dicts }: { dicts?: DictsTypes }) => {
     setInputValue(value);
 
     if (value.trim() === "") {
-      dispatch(setExchangeName({ [dicts?.lang??'en']: "" }));
+      dispatch(setSearchName({ [dicts?.lang??'en']: ""}));
     }
   };
 
   useEffect(() => {
-    setInputValue(filters?.exchangeName?.[dicts?.lang as keyof typeof filters.exchangeName]??'')
+    setInputValue(filters?.searchName?.[dicts?.lang as keyof typeof filters.searchName]??'')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters.exchangeName]);
+  }, [filters.searchName]);
 
   return (
     <Input

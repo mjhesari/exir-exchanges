@@ -10,7 +10,8 @@ import Logo from "./Logo";
 import SearchInput from "./SearchInput";
 import { Icon } from "@iconify/react";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-
+import Image from "next/image";
+import img1 from '@/public/drziba.jpg'
 export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
   return (
     <Navbar
@@ -20,8 +21,18 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
     >
       <NavbarBrand className=" max-w-60">
         <Link href="/" className="flex items-center gap-3 text-black">
-          <Logo />
-          <h1>{dicts.exchangeName}</h1>
+
+          {process?.env?.NEXT_PUBLIC_DIRECTORY === "drziba" ? (
+            <>
+            <Image src={img1} alt="logo" width={45} className="rounded-full"/>
+            <h1>{dicts.DirectoryName.drziba}</h1>
+            </>
+            ) : (
+              <>
+              <Logo />
+              <h1>{dicts.DirectoryName.exchange}</h1>
+              </>
+          )}
         </Link>
       </NavbarBrand>
       <NavbarContent
@@ -40,7 +51,7 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
           </Dropdown>
         </NavbarItem> */}
         <NavbarItem>
-          <SearchInput dicts={dicts}/>
+          <SearchInput dicts={dicts} />
         </NavbarItem>
       </NavbarContent>
       {/* <NavbarContent className="flex-1 gap-6 " justify="center">
@@ -56,21 +67,20 @@ export default function MainNavbar({ dicts }: { dicts: DictsTypes }) {
         </NavbarItem>
       </NavbarContent> */}
       <NavbarContent justify="end" className="gap-4 flex-1">
-        <NavbarItem>
-        <Button
-              as="a"
-              variant="bordered"
-              size="sm"
-              className="text-default-500 rounded-xl hover:text-secondary-600 hover:border-secondary-600"
-              href="/languages"
-              aria-label="language page"
-              startContent={
-                <Icon icon="mdi:translate" className="h-4 w-4" />
-              }
-            >
-              Languages
-            </Button>
-        </NavbarItem>
+        {!process.env.IS_NOT_MULTILANG ?<NavbarItem>
+          <Button
+            as="a"
+            variant="bordered"
+            size="sm"
+            className="text-default-500 rounded-xl hover:text-secondary-600 hover:border-secondary-600"
+            href="/languages"
+            aria-label="language page"
+            startContent={<Icon icon="mdi:translate" className="h-4 w-4" />}
+          >
+            Languages
+          </Button>
+        </NavbarItem>: null}
+        
         {/* <NavbarItem>
           <UserAvatar />
         </NavbarItem>
