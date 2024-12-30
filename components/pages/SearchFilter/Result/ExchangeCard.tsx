@@ -1,5 +1,4 @@
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 export function ExchangeCard({

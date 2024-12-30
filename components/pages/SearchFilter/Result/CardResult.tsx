@@ -1,5 +1,5 @@
 "use client";
-import { Button, Card, CardHeader, Skeleton, Spinner } from "@nextui-org/react";
+import { Button, Card, Skeleton, Spinner } from "@nextui-org/react";
 import { ExchangeCard } from "./ExchangeCard";
 import { DictsTypes } from "@/app/[lang]/dictionaries/dictionaries";
 import { useAppDispatch, useAppSelector } from "@/redux/app/hooks";
